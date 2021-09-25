@@ -66,6 +66,17 @@ def read_csv(CSVfile, attr):
     f.close()
     return data
 
+# class that represents our actual decision tree
+class DecisionTree:
+    # member variables that represent different data streams build from our CSV
+    training_set = []
+    labels = []
+    attributes = []
+    attribute_values = {} 
+
+    def __init__(self) -> None:
+        pass
+
 def main():
     desc_file = "data-desc.txt"
     l = []
