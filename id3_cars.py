@@ -24,13 +24,24 @@ children - connected nodes
 """
 class Node: 
     # constructur => give default values to parameters
-    def __init__(self, value = None, label = None, children = {}) -> None:
-        self.attribute  = value
-        self.label      = label
-        self.children   = children
+    def __init__(self, value = None, label = None, children = None) -> None:
+        # [on_true] if [expression] else [on_false]
+        self.attribute = "" if value is None else value
+        self.label = "" if label is None else label
+        self.children = {} if children is None else children
 
     # override to string for representing obj
-
+    def __str__(self, level = 0) -> str:
+        ret = ""
+        if self.attribute != "":
+            ret += "[" + repr(self.attribute) + "]\n"
+        else:
+            ret += "= " + repr(self.label) + "\n"
+        
+        for key, value in self.children.items():
+            ret += "\t"*level+repr(key)
+            ret += value.__str__(level+1)
+        return ret
 
 # read CSV and format it into a usable structure
 def read_csv(CSVfile, attr):
@@ -111,16 +122,16 @@ class DecisionTree:
             entropy += (-proportion * math.log(proportion, 2) if proportion != 0 else 0)
         return entropy
 
-    def best_attribute(self, attributes):
-        current_entropy = self.calculate_entropy(self.training_set)
+    def best_attribute(self, data, attributes):
+        current_entropy = self.calculate_entropy(data)
         # for each attribute in our attributes list, calc the entropy & information gain for each set of values in our list
-        data_size = len(self.training_set)
+        data_size = len(data)
         attribute_information_gain = {}
 
         for attribute in attributes:
             expected_attribute_entropy = []
             for value in self.attribute_values[attribute]:
-                data_attribute_values = list(filter(lambda x: x[attribute] == value, self.training_set))
+                data_attribute_values = list(filter(lambda x: x[attribute] == value, data))
                 attribute_value_p = len(data_attribute_values)/data_size
                 expected_attribute_entropy.append(self.calculate_entropy(data_attribute_values) * attribute_value_p)
             expected_attribute_entropy = sum(expected_attribute_entropy)
@@ -134,7 +145,7 @@ class DecisionTree:
         for data in training_set:
             data_labels.append(data["label"]) 
         if data_labels.count(data_labels[0]) == len(data_labels):
-            return Node(None, data_labels[0], None)
+            return Node("", data_labels[0], {})
         
         # If attributes is empty, return a leaf node with the most common label
         data_label_count = {}
@@ -142,13 +153,13 @@ class DecisionTree:
             for label in self.labels:
                 data_label_count[label] = data_labels.count(label)
             #just return most common
-            return Node(None, max(data_label_count, key=data_label_count.get), None)
+            return Node("", max(data_label_count, key=data_label_count.get), {})
                  
         # otherwise create a root node for decision tree
         root = Node()
 
         # A = aattribute in Attributes that best split S
-        root.attribute = self.best_attribute(attributes)
+        root.attribute = self.best_attribute(training_set,attributes)
 
         # 
         for value in self.attribute_values[root.attribute]:
@@ -178,8 +189,6 @@ def main():
     decision_tree  = DecisionTree(data_desc_file, training_file)
 
     root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes)
-
-    print("here")
     print(root)
 
 if __name__ == "__main__":
