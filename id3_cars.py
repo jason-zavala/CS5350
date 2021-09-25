@@ -108,6 +108,7 @@ class DecisionTree:
         for proportion in label_proportion:
             # [on_true] if [expression] else [on_false] 
             entropy += (-proportion * math.log(proportion, 2) if proportion != 0 else 0)
+        return entropy
 
         
 def main():
