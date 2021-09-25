@@ -25,14 +25,11 @@ children - connected nodes
 class Node: 
     # constructur => give default values to parameters
     def __init__(self, value = None, label = None, children = {}) -> None:
-        self.value      = value
+        self.attribute  = value
         self.label      = label
         self.children   = children
 
     # override to string for representing obj
-    def __str__ (self, level=0):
-        return "hello world!"
-
 
 
 # read CSV and format it into a usable structure
@@ -90,13 +87,17 @@ class DecisionTree:
                 for index, attribute in enumerate(self.attributes):
                     val[attribute] = terms[index]
                     # get the last col
-                val["label"] = terms[index]
+                val["label"] = terms[index + 1]
                 self.training_set.append(val)
                 
         f.close()
     
     # generically calculate entropy
     def calculate_entropy(self, training_set):
+
+        if len(training_set) == 0:
+            return 0
+        
         label_proportion = []
         # iterate over our list labels are store the p values
         for label in self.labels:
@@ -106,33 +107,80 @@ class DecisionTree:
         # next use -p * log(p)
         entropy = 0
         for proportion in label_proportion:
-            # [on_true] if [expression] else [on_false] 
+            # [on_true] if [expression] else [on_false]
             entropy += (-proportion * math.log(proportion, 2) if proportion != 0 else 0)
         return entropy
 
     def best_attribute(self, attributes):
         current_entropy = self.calculate_entropy(self.training_set)
-
         # for each attribute in our attributes list, calc the entropy & information gain for each set of values in our list
         data_size = len(self.training_set)
         attribute_information_gain = {}
 
         for attribute in attributes:
             expected_attribute_entropy = []
-            for value in self.attribute_values:
+            for value in self.attribute_values[attribute]:
                 data_attribute_values = list(filter(lambda x: x[attribute] == value, self.training_set))
                 attribute_value_p = len(data_attribute_values)/data_size
-                expected_attribute_entropy.append(self.calc_entropy(data_attribute_values) * attribute_value_p)
+                expected_attribute_entropy.append(self.calculate_entropy(data_attribute_values) * attribute_value_p)
             expected_attribute_entropy = sum(expected_attribute_entropy)
             attribute_information_gain[attribute] = current_entropy - expected_attribute_entropy
-        
+
         return max(attribute_information_gain, key=attribute_information_gain.get)
+    
+    def id3_algorithm(self, training_set, attributes):
+        # base/edge cases
+        data_labels = []
+        for data in training_set:
+            data_labels.append(data["label"]) 
+        if data_labels.count(data_labels[0]) == len(data_labels):
+            return Node(None, data_labels[0], None)
+        
+        # If attributes is empty, return a leaf node with the most common label
+        data_label_count = {}
+        if len(attributes) == 0:
+            for label in self.labels:
+                data_label_count[label] = data_labels.count(label)
+            #just return most common
+            return Node(None, max(data_label_count, key=data_label_count.get), None)
+                 
+        # otherwise create a root node for decision tree
+        root = Node()
 
+        # A = aattribute in Attributes that best split S
+        root.attribute = self.best_attribute(attributes)
 
+        # 
+        for value in self.attribute_values[root.attribute]:
+            data_best_attribute_value = list(filter(lambda x: x[root.attribute] == value, training_set))
 
+            # empty? just add a lead node with most common label 
+            if len(data_best_attribute_value) == 0:
+                data_labels = []
+                for data in training_set:
+                    data_labels.append(data["label"])
+
+                data_labels_count = {}
+                for label in self.labels:
+                    data_labels_count[label] = data_labels.count(label)
+
+                return Node(None, max(data_labels_count, key=data_labels_count.get), None)
+            else:
+                attr_copy = attributes.copy()
+                attr_copy.remove(root.attribute)
+                root.children[value] = self.id3_algorithm(data_best_attribute_value, attr_copy)
+
+        return root
         
 def main():
-    print('hello world')
+    data_desc_file = "data-desc.txt"
+    training_file  = "train.csv"
+    decision_tree  = DecisionTree(data_desc_file, training_file)
+
+    root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes)
+
+    print("here")
+    print(root)
 
 if __name__ == "__main__":
     main()
