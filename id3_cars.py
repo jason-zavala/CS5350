@@ -74,9 +74,27 @@ class DecisionTree:
     attributes = []
     attribute_values = {} 
 
-    def __init__(self) -> None:
-        pass
+    def __init__(self, data_description_file, training_file) -> None:
+        # open file and save every file into the list and parse on indexes
+        lines = []
+        with open(data_description_file, 'r') as f:
+            lines = f.readlines()
+        f.close()
 
+        # grab labels from index 2 and sanitize the data
+        self.labels = lines[2].strip().replace(" ", "").split(',')
+
+        # the attributes are in the last column, we reach into the last index and then sanitize the data there
+        self.attributes = lines[-1].strip().split(',')[:-1]
+
+        # basically what we need to do is loop through the lines and check for the attributes, then if we find it - we strip/sanitize the parts we dont need and store it in atr val
+        for attribute in self.attributes:
+            for line in lines: 
+                if attribute in line:
+                    self.attribute_values[attribute] = re.split(',|:|\.', l.strip().replace(" ", ""))[1:-1]
+                    # once we have the values we need we actually dont need to keep looping so we just break
+                    break
+        
 def main():
     desc_file = "data-desc.txt"
     l = []
