@@ -78,7 +78,7 @@ class DecisionTree:
         for attribute in self.attributes:
             for line in lines: 
                 if attribute in line:
-                    self.attribute_values[attribute] = re.split(',|:|\.', l.strip().replace(" ", ""))[1:-1]
+                    self.attribute_values[attribute] = re.split(',|:|\.', line.strip().replace(" ", ""))[1:-1]
                     # once we have the values we need we actually dont need to keep looping so we just break
                     break
         # now we worry about the actual CSVfile
