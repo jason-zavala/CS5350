@@ -33,20 +33,7 @@ class Node:
     def __str__ (self, level=0):
         return "hello world!"
 
-def calculate_entropy(data, label_values):
-    entropy = 0
-    size = len(data)
-    label_ratio = []
 
-    for value in label_values:
-        label_ratio.append(sum(x["label"] == value for x in data)/size)
-    
-    # sum using H(s) = -p * log_2(p)
-    for ratio in label_ratio:
-        if ratio != 0:
-            entropy += -ratio * math.log(ratio, 2)
-    
-    return entropy
 
 # read CSV and format it into a usable structure
 def read_csv(CSVfile, attr):
@@ -94,49 +81,37 @@ class DecisionTree:
                     self.attribute_values[attribute] = re.split(',|:|\.', l.strip().replace(" ", ""))[1:-1]
                     # once we have the values we need we actually dont need to keep looping so we just break
                     break
+        # now we worry about the actual CSVfile
+        with open(training_file, 'r') as f:
+            for line in f:
+                terms = line.strip().split(',')
+                val   = {}
+
+                for index, attribute in enumerate(self.attributes):
+                    val[attribute] = terms[index]
+                    # get the last col
+                val["label"] = terms[index]
+                self.training_set.append(val)
+                
+        f.close()
+    
+    # generically calculate entropy
+    def calculate_entropy(self, training_set):
+        label_proportion = []
+        # iterate over our list labels are store the p values
+        for label in self.labels:
+            # TODO: come back and try  to optimize this... I feel like there is a simpler way to do this..
+            label_proportion.append(sum(split["label"] == label for split in training_set) / len(training_set))
+        
+        # next use -p * log(p)
+        entropy = 0
+        for proportion in label_proportion:
+            # [on_true] if [expression] else [on_false] 
+            entropy += (-proportion * math.log(proportion, 2) if proportion != 0 else 0)
+
         
 def main():
-    desc_file = "data-desc.txt"
-    l = []
-
-    with open(desc_file, 'r') as f:
-        l = f.readlines()
-    f.close()
-
-    label_val = l[2].strip().replace(" ", "").split(',')
-    attributes = l[len(l) - 1].strip().split(',')[:-1]
-    attr_val = {}
-
-    for i in attributes:
-        for lines in l:
-            if i in lines:
-                values = re.split(',|:|\.', lines.strip().replace(" ", ""))[1:-1]
-                attr_val[i] = values
-                break
-            
-    # Get the training data
-    CSVfile = "train.csv"
-    data = read_csv(CSVfile, attributes)           
-    
-    # find entropy
-    curr_entropy = calculate_entropy(data, label_val)
-
-    size = len(data)
-    attr_information_gain = {}
-    
-    for a in attributes:
-        expected_attribute_entropy = []
-        for value in attr_val[a]: 
-            data_attribute_value = list(filter(lambda arr: arr[a] == value, data))
-            attribute_value_rat  = len(data_attribute_value)/size
-            expected_attribute_entropy.append(calculate_entropy(data_attribute_value, label_val)* attribute_value_rat)
-        expected_attribute_entropy = sum(expected_attribute_entropy)
-        attr_information_gain[a] = curr_entropy - expected_attribute_entropy
-    
-    # split on max info gain 
-    best_attribute = max(attr_information_gain, key=attr_information_gain.get)
-    print(attr_information_gain)
-    print(best_attribute)
+    print('hello world')
 
 if __name__ == "__main__":
     main()
