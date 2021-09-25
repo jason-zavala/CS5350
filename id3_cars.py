@@ -110,6 +110,26 @@ class DecisionTree:
             entropy += (-proportion * math.log(proportion, 2) if proportion != 0 else 0)
         return entropy
 
+    def best_attribute(self, attributes):
+        current_entropy = self.calculate_entropy(self.training_set)
+
+        # for each attribute in our attributes list, calc the entropy & information gain for each set of values in our list
+        data_size = len(self.training_set)
+        attribute_information_gain = {}
+
+        for attribute in attributes:
+            expected_attribute_entropy = []
+            for value in self.attribute_values:
+                data_attribute_values = list(filter(lambda x: x[attribute] == value, self.training_set))
+                attribute_value_p = len(data_attribute_values)/data_size
+                expected_attribute_entropy.append(self.calc_entropy(data_attribute_values) * attribute_value_p)
+            expected_attribute_entropy = sum(expected_attribute_entropy)
+            attribute_information_gain[attribute] = current_entropy - expected_attribute_entropy
+        
+        return max(attribute_information_gain, key=attribute_information_gain.get)
+
+
+
         
 def main():
     print('hello world')
