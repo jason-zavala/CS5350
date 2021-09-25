@@ -9,11 +9,29 @@ from collections import Counter
 import math, re
 
 
+
+"""
+This represents the data structure for the actual tree
+to start of we have:
+
+root
+
+each node has:
+
+value    - decision split
+label    - leafs
+children - connected nodes
+"""
 class Node: 
-    def __init__(self) -> None:
-        self.val      = None
-        self.next     = None
-        self.children = None
+    # constructur => give default values to parameters
+    def __init__(self, value = None, label = None, children = {}) -> None:
+        self.value      = value
+        self.label      = label
+        self.children   = children
+
+    # override to string for representing obj
+    def __str__ (self, level=0):
+        return "hello world!"
 
 def calculate_entropy(data, label_values):
     entropy = 0
