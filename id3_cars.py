@@ -122,7 +122,7 @@ class DecisionTree:
         for p in label_p:
             gini += p**2
         
-        return gini
+        return 1 - gini
 
     def calculate_majority_error(self, data):
         if len(data) == 0:
