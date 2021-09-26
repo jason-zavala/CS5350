@@ -103,6 +103,24 @@ class DecisionTree:
             entropy += (-proportion * math.log(proportion, 2) if proportion != 0 else 0)
         return entropy
 
+
+    def calculate_majority_error(self, data):
+        if len(data) == 0:
+            return 0
+        
+        label_proportion = []
+        # iterate over our list labels are store the p values
+        for label in self.labels:
+            # TODO: come back and try  to optimize this... I feel like there is a simpler way to do this..
+            label_proportion.append(sum(split["label"] == label for split in training_set) / len(training_set))
+        
+        # next use -p * log(p)
+        entropy = 0
+        for proportion in label_proportion:
+            # [on_true] if [expression] else [on_false]
+            entropy += (-proportion * math.log(proportion, 2) if proportion != 0 else 0)
+        return entropy
+
     def best_attribute(self, data, attributes):
         current_entropy = self.calculate_entropy(data)
         # for each attribute in our attributes list, calc the entropy & information gain for each set of values in our list
