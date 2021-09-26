@@ -6,7 +6,7 @@ Univeristy of Utah
 Fall 2021
 """
 from collections import Counter
-import math, re
+import math, re, sys
 
 
 
@@ -51,7 +51,10 @@ class DecisionTree:
     attributes = []
     attribute_values = {} 
 
-    def __init__(self, data_description_file, training_file) -> None:
+    def __init__(self, data_description_file, training_file, information_gain_method, maximus_deptheus) -> None:
+
+        self.information_gain_method = information_gain_method
+        self.max_depth = maximus_deptheus
         # open file and save every file into the list and parse on indexes
         lines = []
         with open(data_description_file, 'r') as f:
@@ -103,26 +106,45 @@ class DecisionTree:
             entropy += (-proportion * math.log(proportion, 2) if proportion != 0 else 0)
         return entropy
 
+    # gini index
+    def calculate_gini_index(self, data):
+        size = len(data)
+
+        if size == 0:
+            return 0
+        
+        label_p = []
+
+        for label in self.labels:
+            label_p.append(sum(split["label"] == label for split in data) / len(data))
+        gini = 0
+
+        for p in label_p:
+            gini += p**2
+        
+        return gini
 
     def calculate_majority_error(self, data):
         if len(data) == 0:
             return 0
-        
-        label_proportion = []
-        # iterate over our list labels are store the p values
-        for label in self.labels:
-            # TODO: come back and try  to optimize this... I feel like there is a simpler way to do this..
-            label_proportion.append(sum(split["label"] == label for split in training_set) / len(training_set))
-        
-        # next use -p * log(p)
-        entropy = 0
-        for proportion in label_proportion:
-            # [on_true] if [expression] else [on_false]
-            entropy += (-proportion * math.log(proportion, 2) if proportion != 0 else 0)
-        return entropy
+        label_p = []
 
+        for label in self.labels:
+            label_p.append(sum(split["label"] == label for split in data) / len(data))
+        
+        return min(label_p)
+
+    # this is where the magic happens
+    def calculate_information_gain(self, data):
+
+        if self.information_gain_method == "entropy": 
+            return self.calculate_entropy(data)
+        elif self.information_gain_method == "gini":
+            return self.calculate_gini_index(data)
+        return self.calculate_majority_error(data)
+    
     def best_attribute(self, data, attributes):
-        current_entropy = self.calculate_entropy(data)
+        current_entropy = self.calculate_information_gain(data)
         # for each attribute in our attributes list, calc the entropy & information gain for each set of values in our list
         data_size = len(data)
         attribute_information_gain = {}
@@ -132,13 +154,13 @@ class DecisionTree:
             for value in self.attribute_values[attribute]:
                 data_attribute_values = list(filter(lambda x: x[attribute] == value, data))
                 attribute_value_p = len(data_attribute_values)/data_size
-                expected_attribute_entropy.append(self.calculate_entropy(data_attribute_values) * attribute_value_p)
+                expected_attribute_entropy.append(self.calculate_information_gain(data_attribute_values) * attribute_value_p)
             expected_attribute_entropy = sum(expected_attribute_entropy)
             attribute_information_gain[attribute] = current_entropy - expected_attribute_entropy
 
         return max(attribute_information_gain, key=attribute_information_gain.get)
     
-    def id3_algorithm(self, training_set, attributes):
+    def id3_algorithm(self, training_set, attributes, depth=0):
         # base/edge cases
         data_labels = []
         for data in training_set:
@@ -160,6 +182,9 @@ class DecisionTree:
         # A = aattribute in Attributes that best split S
         root.attribute = self.best_attribute(training_set,attributes)
 
+        #this is where the level magic happens
+        if depth >= self.max_depth:
+            return root
         # 
         for value in self.attribute_values[root.attribute]:
             data_best_attribute_value = list(filter(lambda x: x[root.attribute] == value, training_set))
@@ -178,17 +203,16 @@ class DecisionTree:
             else:
                 attr_copy = attributes.copy()
                 attr_copy.remove(root.attribute)
-                root.children[value] = self.id3_algorithm(data_best_attribute_value, attr_copy)
+                root.children[value] = self.id3_algorithm(data_best_attribute_value, attr_copy, depth + 1)
 
         return root
         
 def main():
     data_desc_file = "data-desc.txt"
     training_file  = "train.csv"
-    decision_tree  = DecisionTree(data_desc_file, training_file)
-    print(decision_tree.training_set)
-    root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes)
-    #print(root)
+    decision_tree  = DecisionTree(data_desc_file, training_file, sys.argv[1], int(sys.argv[2]))
+    root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes, 0)
+    print(root)
 
 if __name__ == "__main__":
     main()
