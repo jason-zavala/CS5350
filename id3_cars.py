@@ -43,24 +43,6 @@ class Node:
             ret += value.__str__(level+1)
         return ret
 
-# read CSV and format it into a usable structure
-def read_csv(CSVfile, attr):
-    data = []
-    with open(CSVfile, 'r') as f:
-        for line in f:
-            terms = line.strip().split(',')
-            val   = {}
-            count = 0
-
-            for attributes in attr:
-                val[attributes] = terms[count]
-                count = count + 1
-                # get the last col
-            val["label"] = terms[count]
-            data.append(val)
-    f.close()
-    return data
-
 # class that represents our actual decision tree
 class DecisionTree:
     # member variables that represent different data streams build from our CSV
@@ -105,7 +87,6 @@ class DecisionTree:
     
     # generically calculate entropy
     def calculate_entropy(self, training_set):
-
         if len(training_set) == 0:
             return 0
         
@@ -187,9 +168,9 @@ def main():
     data_desc_file = "data-desc.txt"
     training_file  = "train.csv"
     decision_tree  = DecisionTree(data_desc_file, training_file)
-
+    print(decision_tree.training_set)
     root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes)
-    print(root)
+    #print(root)
 
 if __name__ == "__main__":
     main()
