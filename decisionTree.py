@@ -6,7 +6,7 @@ Univeristy of Utah
 Fall 2021
 """
 from collections import Counter
-import math, re, sys
+import math, re, sys, os
 
 
 
@@ -208,8 +208,8 @@ class DecisionTree:
         return root
         
 def main():
-    data_desc_file = "data-desc.txt"
-    training_file  = "train.csv"
+    data_desc_file = os.path.join("bank", "data-desc.txt")
+    training_file = os.path.join("bank", "train.csv")
     decision_tree  = DecisionTree(data_desc_file, training_file, sys.argv[1], int(sys.argv[2]))
     root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes, 0)
     print(root)
