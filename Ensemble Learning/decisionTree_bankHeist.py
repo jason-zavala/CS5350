@@ -198,6 +198,21 @@ class DecisionTree:
 
         return max(attribute_information_gain, key=attribute_information_gain.get)
     
+    def calculate_error():
+        print()
+    def adaboost(self):
+        sample_weight = []
+        weight = 1/len(self.training_set)
+
+        #fill our arr with appropriate weights
+        for _ in range(len(self.training_set)):
+            sample_weight.append(weight)
+        # stumpify
+        self.max_depth = 1
+        stump = self.id3_algorithm(self.training_set, self.attributes)
+
+        return ""
+    
     def id3_algorithm(self, training_set, attributes, depth=0):
         # base/edge cases
         data_labels = []
@@ -296,13 +311,13 @@ class DecisionTree:
                     root.children[value] = self.id3_algorithm(data_best_attribute_value, attr_copy, depth + 1)
 
         return root
-        
+  
 def main():
     data_desc_file = os.path.join("bank", "data-desc.txt")
     training_file = os.path.join("bank", "train.csv")
 
     decision_tree  = DecisionTree(data_desc_file, training_file, sys.argv[1], int(sys.argv[2]))
-    root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes, 0)
+    root = decision_tree.adaboost(decision_tree.training_set, decision_tree.attributes, 0)
     print(root)
 
 if __name__ == "__main__":
