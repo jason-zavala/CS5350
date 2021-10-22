@@ -50,6 +50,7 @@ class DecisionTree:
     labels = []
     attributes = []
     attribute_values = {} 
+    weight = []
 
     def __init__(self, data_description_file, training_file, information_gain_method, maximus_deptheus) -> None:
 
@@ -77,6 +78,7 @@ class DecisionTree:
         self.attribute_values["pdays"] = ["numeric"]
         self.attribute_values["previous"] = ["numeric"]
         self.attribute_values["poutcome"] = ["unknown", "other", "failure", "success"]
+
         # now we worry about the actual CSVfile
         with open(training_file, 'r') as f:
             for line in f:
@@ -89,7 +91,12 @@ class DecisionTree:
                 val["label"] = terms[index + 1]
                 self.training_set.append(val)
         f.close()
-
+        w = 1/len(self.training_set)
+        
+        #fill our arr with appropriate weights
+        for _ in range(len(self.training_set)):
+            self.weight.append(w)
+        
         most_common_value = {}
 
         for attribute in self.attributes:
@@ -198,20 +205,40 @@ class DecisionTree:
 
         return max(attribute_information_gain, key=attribute_information_gain.get)
     
-    def calculate_error():
-        print()
-    def adaboost(self):
-        sample_weight = []
-        weight = 1/len(self.training_set)
+    def calculate_error(self, stump):
+        total_error = 0
+        for index, data in enumerate(self.training_set):
+            current_node = stump
+            decision = current_node.attribute
+            decision_value = data[decision]
 
-        #fill our arr with appropriate weights
-        for _ in range(len(self.training_set)):
-            sample_weight.append(weight)
+            if self.attribute_values[decision] == ["numeric"]:
+                num_median = int(list(current_node.children.keys())[0][2:])
+
+                if int(decision_value) < num_median:
+                    current_node = current_node.children["< " + str(num_median)]
+                else:
+                    current_node = current_node.children[">= " + str(num_median)]
+            else:
+                current_node = current_node.children[decision_value]
+            
+            label_prediction = current_node.label
+
+            if data["label"] != label_prediction:
+                total_error += self.weight[index]
+
+        print(total_error)
+        return total_error
+
+    def adaboost(self):       
         # stumpify
         self.max_depth = 1
         stump = self.id3_algorithm(self.training_set, self.attributes)
+        
+        stump_error = self.calculate_error(stump)
 
-        return ""
+        #print(stump_error)
+        return stump
     
     def id3_algorithm(self, training_set, attributes, depth=0):
         # base/edge cases
@@ -317,7 +344,7 @@ def main():
     training_file = os.path.join("bank", "train.csv")
 
     decision_tree  = DecisionTree(data_desc_file, training_file, sys.argv[1], int(sys.argv[2]))
-    root = decision_tree.adaboost(decision_tree.training_set, decision_tree.attributes, 0)
+    root = decision_tree.adaboost()
     print(root)
 
 if __name__ == "__main__":
