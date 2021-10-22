@@ -97,13 +97,13 @@ class DecisionTree:
             value_counts = {}
             for value in self.attribute_values[attribute]:
                 value_counts[value] = len(list(filter(lambda x: x[attribute] == value, self.training_set)))
-            value_counts.pop("uknown", None)
+            value_counts.pop("unknown", None)
             most_common_value[attribute] = max(value_counts)
         
         # replace unknowns
         for data in self.training_set:
             for attribute in self.attributes:
-                if data[attribute] == "uknown":
+                if data[attribute] == "unknown":
                     data[attribute] = most_common_value[attribute]
     
     # generically calculate entropy
