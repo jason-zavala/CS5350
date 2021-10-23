@@ -52,10 +52,11 @@ class DecisionTree:
     attribute_values = {} 
     weight = []
 
-    def __init__(self, data_description_file, training_file, information_gain_method, maximus_deptheus) -> None:
+    def __init__(self, training_file, information_gain_method, maximus_deptheus) -> None:
 
         self.information_gain_method = information_gain_method
-        self.max_depth = maximus_deptheus
+        self.max_depth   = maximus_deptheus
+        self.forest_size = maximus_deptheus
         # manually set because this is already 2 days late
         self.labels = ["yes", "no"]
         self.attributes = ["age", "job", "marital", "education", "default", "balance",\
@@ -240,7 +241,6 @@ class DecisionTree:
             self.weight[index] = self.weight[index]/total_weight
         return total_weight
 
-
     def calculate_error(self, stump):
         total_error = 0
         for index, data in enumerate(self.training_set):
@@ -267,14 +267,17 @@ class DecisionTree:
 
     def adaboost(self):       
         # stumpify
-        self.max_depth = 1
-        stump = self.id3_algorithm(self.training_set, self.attributes)
-        
-        stump_error = self.calculate_error(stump)
+        forest = []
+        for _ in range(self.forest_size):
+            stump = self.id3_algorithm(self.training_set, self.attributes)
+            
+            stump_error = self.calculate_error(stump)
 
-        new_weight = self.calculate_weight(stump_error)
-        self.calculate_new_weight(stump, new_weight)
-        print(self.weight)
+            new_weight = self.calculate_weight(stump_error)
+            print(stump_error)
+            self.calculate_new_weight(stump, new_weight)
+            forest.append((stump, self.weight))
+
         return stump
     
     def id3_algorithm(self, training_set, attributes, depth=0):
@@ -380,8 +383,18 @@ def main():
     data_desc_file = os.path.join("bank", "data-desc.txt")
     training_file = os.path.join("bank", "train.csv")
 
-    decision_tree  = DecisionTree(data_desc_file, training_file, sys.argv[1], int(sys.argv[2]))
-    root = decision_tree.adaboost()
+    purity = sys.argv[1]
+    max_depth = int(sys.argv[2])
+    decision_tree  = DecisionTree(training_file,purity, max_depth)
+
+    if purity == "ada":
+        #decision_tree.forest_size = 1
+        decision_tree.max_depth = 1
+        decision_tree.information_gain_method = "gini"    
+        root = decision_tree.adaboost()
+    else:
+        root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes, 0)
+        
     print(root)
 
 if __name__ == "__main__":
