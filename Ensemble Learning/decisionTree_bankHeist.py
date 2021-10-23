@@ -317,7 +317,15 @@ class DecisionTree:
             return root
 
         # A = aattribute in Attributes that best split S
-        root.attribute = self.best_attribute(training_set,attributes)
+        random_attributes = []
+        if self.ensemble == "random":
+            for _ in range(int(len(attributes)/2)):
+                random_i = random.randrange(1,len(attributes))
+                random_attributes.append(attributes[random_i])
+        else:
+            random_attributes = attributes
+
+        root.attribute = self.best_attribute(training_set,random_attributes)
 
         if self.attribute_values[root.attribute] == ["numeric"] :
             num_val = []
@@ -340,7 +348,7 @@ class DecisionTree:
 
                 return Node(None, max(data_labels_count, key=data_labels_count.get), None)
             else:
-                attr_copy = attributes.copy()
+                attr_copy = random_attributes.copy()
                 attr_copy.remove(root.attribute)
                 root.children["< " + str(median)] = self.id3_algorithm(data_best_attribute_value, attr_copy, depth + 1)
 
@@ -360,7 +368,7 @@ class DecisionTree:
 
                 return Node(None, max(data_labels_count, key=data_labels_count.get), None)
             else:
-                attr_copy = attributes.copy()
+                attr_copy = random_attributes.copy()
                 attr_copy.remove(root.attribute)
                 root.children[">= " + str(median)] = self.id3_algorithm(data_best_attribute_value, attr_copy, depth + 1)
 
@@ -381,7 +389,7 @@ class DecisionTree:
 
                     return Node(None, max(data_labels_count, key=data_labels_count.get), None)
                 else:
-                    attr_copy = attributes.copy()
+                    attr_copy = random_attributes.copy()
                     attr_copy.remove(root.attribute)
                     root.children[value] = self.id3_algorithm(data_best_attribute_value, attr_copy, depth + 1)
 
