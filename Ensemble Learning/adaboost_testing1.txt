@@ -1,556 +1,96 @@
-Adaboost -- Forest size: 1
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 2
-Training error         : 0.1094
-Test error percentage  : 0.115
-
-Adaboost -- Forest size: 3
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 4
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 5
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 6
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 7
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 8
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 9
-Training error         : 0.1176
-Test error percentage  : 0.1226
-
-Adaboost -- Forest size: 10
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 11
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 12
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 13
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 14
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 15
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 16
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 17
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 18
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 19
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 20
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 21
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 22
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 23
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 24
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 25
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 26
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 27
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 28
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 29
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 30
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 31
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 32
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 33
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 34
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 35
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 36
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 37
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 38
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 39
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 40
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 41
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 42
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 43
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 44
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 45
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 46
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 47
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 48
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 49
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 50
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 51
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 52
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 53
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 54
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 55
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 56
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 57
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 58
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 59
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 60
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 61
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 62
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 63
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 64
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 65
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 66
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 67
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 68
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 69
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 70
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 71
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 72
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 73
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 74
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 75
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 76
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 77
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 78
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 79
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 80
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 81
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 82
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 83
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 84
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 85
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 86
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 87
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 88
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 89
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 90
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 91
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 92
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 93
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 94
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 95
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 96
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 97
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 98
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 99
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 100
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 101
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 102
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 103
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 104
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 105
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 106
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 107
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 108
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 109
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 110
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 111
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 112
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 113
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 114
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 115
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 116
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 117
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 118
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 119
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 120
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 121
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 122
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 123
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 124
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 125
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 126
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 127
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 128
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 129
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 130
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 131
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 132
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 133
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 134
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 135
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 136
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 137
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 138
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
-Adaboost -- Forest size: 139
-Training error         : 0.1192
-Test error percentage  : 0.1248
-
+1,0.1192,0.1248
+2,0.1094,0.115
+3,0.1192,0.1248
+4,0.1192,0.1248
+5,0.1192,0.1248
+6,0.1192,0.1248
+7,0.1192,0.1248
+8,0.1192,0.1248
+9,0.1176,0.1226
+10,0.1192,0.1248
+11,0.1192,0.1248
+12,0.1192,0.1248
+13,0.1192,0.1248
+14,0.1192,0.1248
+15,0.1192,0.1248
+16,0.1192,0.1248
+17,0.1192,0.1248
+18,0.1192,0.1248
+19,0.1192,0.1248
+20,0.1192,0.1248
+21,0.1192,0.1248
+22,0.1192,0.1248
+23,0.1192,0.1248
+24,0.1192,0.1248
+25,0.1192,0.1248
+26,0.1192,0.1248
+27,0.1192,0.1248
+28,0.1192,0.1248
+29,0.1192,0.1248
+30,0.1192,0.1248
+31,0.1192,0.1248
+32,0.1192,0.1248
+33,0.1192,0.1248
+34,0.1192,0.1248
+35,0.1192,0.1248
+36,0.1192,0.1248
+37,0.1192,0.1248
+38,0.1192,0.1248
+39,0.1192,0.1248
+40,0.1192,0.1248
+41,0.1192,0.1248
+42,0.1192,0.1248
+43,0.1192,0.1248
+44,0.1192,0.1248
+45,0.1192,0.1248
+46,0.1192,0.1248
+47,0.1192,0.1248
+48,0.1192,0.1248
+49,0.1192,0.1248
+50,0.1192,0.1248
+51,0.1192,0.1248
+52,0.1192,0.1248
+53,0.1192,0.1248
+54,0.1192,0.1248
+55,0.1192,0.1248
+56,0.1192,0.1248
+57,0.1192,0.1248
+58,0.1192,0.1248
+59,0.1192,0.1248
+60,0.1192,0.1248
+61,0.1192,0.1248
+62,0.1192,0.1248
+63,0.1192,0.1248
+64,0.1192,0.1248
+65,0.1192,0.1248
+66,0.1192,0.1248
+67,0.1192,0.1248
+68,0.1192,0.1248
+69,0.1192,0.1248
+70,0.1192,0.1248
+71,0.1192,0.1248
+72,0.1192,0.1248
+73,0.1192,0.1248
+74,0.1192,0.1248
+75,0.1192,0.1248
+76,0.1192,0.1248
+77,0.1192,0.1248
+78,0.1192,0.1248
+79,0.1192,0.1248
+80,0.1192,0.1248
+81,0.1192,0.1248
+82,0.1192,0.1248
+83,0.1192,0.1248
+84,0.1192,0.1248
+85,0.1192,0.1248
+86,0.1192,0.1248
+87,0.1192,0.1248
+88,0.1192,0.1248
+89,0.1192,0.1248
+90,0.1192,0.1248
+91,0.1192,0.1248
+92,0.1192,0.1248
+93,0.1192,0.1248
+94,0.1192,0.1248
+95,0.1192,0.1248
+96,0.1192,0.1248

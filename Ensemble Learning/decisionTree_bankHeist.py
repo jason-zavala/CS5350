@@ -270,10 +270,11 @@ class DecisionTree:
             stump = self.id3_algorithm(self.training_set, self.attributes)
             
             stump_error = self.calculate_error(stump)
+            
             new_weight = self.calculate_weight(stump_error)
             self.calculate_new_weight(stump, new_weight)
             forest_gump.append((stump, self.weight))
-
+        print(stump_error)
         return forest_gump
     
     def id3_algorithm(self, training_set, attributes, depth=0):
@@ -443,8 +444,8 @@ def main():
 
     purity         = sys.argv[1]
     max_depth      = int(sys.argv[2])
-    f = open("adaboost_testing1.txt", "a")
-    for i in range(500):
+    
+    for i in range(101):
         decision_tree  = DecisionTree(training_file,purity, i + 1)
 
         if purity == "ada":
@@ -454,12 +455,7 @@ def main():
             forest = decision_tree.adaboost()
             training_error_percentage = calculate_error_percentage(decision_tree.training_set, forest, decision_tree)
             test_error_percentage = calculate_error_percentage(read_data(test_file, decision_tree.attributes), forest, decision_tree)
-            print(decision_tree.forest_size)
-            f.write("Adaboost -- Forest size: "+ str(decision_tree.forest_size) + "\n")
-            f.write("Training error         : " + str(training_error_percentage) + "\n")
-            f.write("Test error percentage  : " + str(test_error_percentage) + "\n")
-            f.write("" + "\n")
-
+    
         else: 
             root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes, 0)
             print(root)
