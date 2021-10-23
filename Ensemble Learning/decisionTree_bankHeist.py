@@ -81,23 +81,13 @@ class DecisionTree:
         self.attribute_values["poutcome"] = ["unknown", "other", "failure", "success"]
 
         # now we worry about the actual CSVfile
-        with open(training_file, 'r') as f:
-            for line in f:
-                terms = line.strip().split(',')
-                val   = {}
-
-                for index, attribute in enumerate(self.attributes):
-                    val[attribute] = terms[index]
-                    # get the last col
-                val["label"] = terms[index + 1]
-                self.training_set.append(val)
-        f.close()
+        self.training_set = read_data(training_file, self.attributes)
         w = 1/len(self.training_set)
         
         #fill our arr with appropriate weights
         for _ in range(len(self.training_set)):
             self.weight.append(w)
-        
+        """
         most_common_value = {}
 
         for attribute in self.attributes:
@@ -111,7 +101,9 @@ class DecisionTree:
         for data in self.training_set:
             for attribute in self.attributes:
                 if data[attribute] == "unknown":
-                    data[attribute] = most_common_value[attribute]
+                    data[attribute] = most_common_value[attribute] 
+
+                    """
     
     # generically calculate entropy
     def calculate_entropy(self, training_set):
@@ -139,9 +131,15 @@ class DecisionTree:
             return 0
         
         label_p = []
-
+        
+        
         for label in self.labels:
-            label_p.append(sum(split["label"] == label for split in data) / len(data))
+            weighted_sum = 0
+            for index, data in enumerate(self.training_set):
+                if data["label"] == label:
+                    weighted_sum += self.weight[index]
+            label_p.append(weighted_sum)
+            #label_p.append(sum(split["label"] == label for split in data) / len(data))
         gini = 0
 
         for p in label_p:
@@ -267,18 +265,16 @@ class DecisionTree:
 
     def adaboost(self):       
         # stumpify
-        forest = []
+        forest_gump = []
         for _ in range(self.forest_size):
             stump = self.id3_algorithm(self.training_set, self.attributes)
             
             stump_error = self.calculate_error(stump)
-
             new_weight = self.calculate_weight(stump_error)
-            print(stump_error)
             self.calculate_new_weight(stump, new_weight)
-            forest.append((stump, self.weight))
+            forest_gump.append((stump, self.weight))
 
-        return stump
+        return forest_gump
     
     def id3_algorithm(self, training_set, attributes, depth=0):
         # base/edge cases
@@ -378,24 +374,97 @@ class DecisionTree:
                     root.children[value] = self.id3_algorithm(data_best_attribute_value, attr_copy, depth + 1)
 
         return root
-  
-def main():
-    data_desc_file = os.path.join("bank", "data-desc.txt")
-    training_file = os.path.join("bank", "train.csv")
-
-    purity = sys.argv[1]
-    max_depth = int(sys.argv[2])
-    decision_tree  = DecisionTree(training_file,purity, max_depth)
-
-    if purity == "ada":
-        #decision_tree.forest_size = 1
-        decision_tree.max_depth = 1
-        decision_tree.information_gain_method = "gini"    
-        root = decision_tree.adaboost()
-    else:
-        root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes, 0)
+    
+    def adaboost_prediction(self, forest, data):
+        label_predictions = {}
+        for label in self.labels:
+            label_predictions[label] = 0
         
-    print(root)
+        for index, stump in enumerate(forest):
+            current_node = stump[0]
+            decision = current_node.attribute
+            decision_value = data[decision]
 
+            if self.attribute_values[decision] == ["numeric"]:
+                num_median = int(list(current_node.children.keys())[0][2:])
+
+                if int(decision_value) < num_median:
+                    current_node = current_node.children["< " + str(num_median)]
+                else:
+                    current_node = current_node.children[">= " + str(num_median)]
+            else:
+                current_node = current_node.children[decision_value]
+            
+            label_prediction = current_node.label 
+            weight = stump[1]
+            label_predictions[label_prediction] += weight[index]
+
+        label = ""
+        max_sum = 0 
+        for l, sum in label_predictions.items():
+            if (sum > max_sum):
+                max_sum = sum
+                label = l
+
+        return label
+
+
+def read_data(csv, attributes):
+
+    data = []
+    with open(csv, 'r') as f:
+        for line in f:
+            terms = line.strip().split(',')
+            val   = {}
+
+            for index, attribute in enumerate(attributes):
+                val[attribute] = terms[index]
+                # get the last col
+            val["label"] = terms[index + 1]
+            data.append(val)
+    f.close()
+    return data
+    
+def calculate_error_percentage(dataset, forest, decision_tree):
+    predictions_errors = 0 
+    for data in dataset:
+        label_prediction = decision_tree.adaboost_prediction(forest, data)
+
+        #keep track of errors
+        if data["label"] != label_prediction:
+            predictions_errors += 1
+    error_percentage = predictions_errors/len(dataset)
+    return error_percentage
+
+def main():
+    #data_desc_file = os.path.join("bank", "data-desc.txt")
+    training_file = os.path.join("bank", "train.csv")
+    test_file = os.path.join("bank", "test.csv")
+
+    purity         = sys.argv[1]
+    max_depth      = int(sys.argv[2])
+    f = open("adaboost_testing1.txt", "a")
+    for i in range(500):
+        decision_tree  = DecisionTree(training_file,purity, i + 1)
+
+        if purity == "ada":
+            #decision_tree.forest_size = 1
+            decision_tree.max_depth = 1
+            decision_tree.information_gain_method = "gini"    
+            forest = decision_tree.adaboost()
+            training_error_percentage = calculate_error_percentage(decision_tree.training_set, forest, decision_tree)
+            test_error_percentage = calculate_error_percentage(read_data(test_file, decision_tree.attributes), forest, decision_tree)
+            print(decision_tree.forest_size)
+            f.write("Adaboost -- Forest size: "+ str(decision_tree.forest_size) + "\n")
+            f.write("Training error         : " + str(training_error_percentage) + "\n")
+            f.write("Test error percentage  : " + str(test_error_percentage) + "\n")
+            f.write("" + "\n")
+
+        else: 
+            root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes, 0)
+            print(root)
+    
+    f.close()
+        
 if __name__ == "__main__":
     main()
