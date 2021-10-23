@@ -13,3 +13,16 @@ python3 decisionTree.py gini 2
 python3 decisionTree.py me 56
 
 
+Update: 
+
+passing "ada" for the first argument will choose the gini index for purity, and run the adaboost algo.
+
+Example:
+
+python3 decisionTree.py ada 3
+
+Update: 
+
+Passing "random" or "bag" for the third argument will run using the bagged trees algorithm / random forests method respectively. 
+
+
