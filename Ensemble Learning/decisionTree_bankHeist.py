@@ -205,6 +205,42 @@ class DecisionTree:
 
         return max(attribute_information_gain, key=attribute_information_gain.get)
     
+    def calculate_weight(self, total_error):
+        total_error_remaining = 1 - total_error
+        return (1/2) * math.log(total_error_remaining/total_error)
+
+    def calculate_new_weight(self, stump, scale):
+        total_weight = 0
+        for index, data in enumerate(self.training_set):
+            current_node = stump
+            decision = current_node.attribute
+            decision_value = data[decision]
+
+            if self.attribute_values[decision] == ["numeric"]:
+                num_median = int(list(current_node.children.keys())[0][2:])
+
+                if int(decision_value) < num_median:
+                    current_node = current_node.children["< " + str(num_median)]
+                else:
+                    current_node = current_node.children[">= " + str(num_median)]
+            else:
+                current_node = current_node.children[decision_value]
+            
+            label_prediction = current_node.label
+
+            if data["label"] == label_prediction:
+                self.weight[index] *= math.exp(-scale)
+            else:
+                self.weight[index] *= math.exp(scale)
+            total_weight += self.weight[index]
+
+        # last step is to normalize
+
+        for index, _ in enumerate(self.weight):
+            self.weight[index] = self.weight[index]/total_weight
+        return total_weight
+
+
     def calculate_error(self, stump):
         total_error = 0
         for index, data in enumerate(self.training_set):
@@ -227,7 +263,6 @@ class DecisionTree:
             if data["label"] != label_prediction:
                 total_error += self.weight[index]
 
-        print(total_error)
         return total_error
 
     def adaboost(self):       
@@ -237,7 +272,9 @@ class DecisionTree:
         
         stump_error = self.calculate_error(stump)
 
-        #print(stump_error)
+        new_weight = self.calculate_weight(stump_error)
+        self.calculate_new_weight(stump, new_weight)
+        print(self.weight)
         return stump
     
     def id3_algorithm(self, training_set, attributes, depth=0):

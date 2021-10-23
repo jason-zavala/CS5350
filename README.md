@@ -9,7 +9,7 @@ To run the decision tree you need 2 parameters (between gini index, majority err
 EXAMPLE:
 
 python3 decisionTree.py entropy 3
-python3 decisionTree.py gi 2
+python3 decisionTree.py gini 2
 python3 decisionTree.py me 56
 
 
