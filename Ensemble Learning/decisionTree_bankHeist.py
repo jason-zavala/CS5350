@@ -6,7 +6,7 @@ Univeristy of Utah
 Fall 2021
 """
 from collections import Counter
-import math, re, sys, os
+import math, re, sys, os, random
 import statistics as st
 # added this here for testing
 
@@ -52,11 +52,12 @@ class DecisionTree:
     attribute_values = {} 
     weight = []
 
-    def __init__(self, training_file, information_gain_method, maximus_deptheus) -> None:
+    def __init__(self, training_file, information_gain_method, maximus_deptheus, ensemble) -> None:
 
         self.information_gain_method = information_gain_method
         self.max_depth   = maximus_deptheus
         self.forest_size = maximus_deptheus
+        self.ensemble = ensemble
         # manually set because this is already 2 days late
         self.labels = ["yes", "no"]
         self.attributes = ["age", "job", "marital", "education", "default", "balance",\
@@ -266,15 +267,25 @@ class DecisionTree:
     def adaboost(self):       
         # stumpify
         forest_gump = []
+        
+
         for _ in range(self.forest_size):
-            stump = self.id3_algorithm(self.training_set, self.attributes)
+            data = []
+            m = 1000
+            if self.ensemble == "bag":
+                for _ in range(m):
+                    random_index = random.randrange(len(self.training_set))
+                    data.append(self.training_set[random_index])
+            else: 
+                data = self.training_set
+            
+            stump = self.id3_algorithm(data, self.attributes)
             
             stump_error = self.calculate_error(stump)
             
             new_weight = self.calculate_weight(stump_error)
             self.calculate_new_weight(stump, new_weight)
             forest_gump.append((stump, self.weight))
-        print(stump_error)
         return forest_gump
     
     def id3_algorithm(self, training_set, attributes, depth=0):
@@ -444,23 +455,26 @@ def main():
 
     purity         = sys.argv[1]
     max_depth      = int(sys.argv[2])
-    
-    for i in range(101):
-        decision_tree  = DecisionTree(training_file,purity, i + 1)
+    ensemble_learning = sys.argv[3]
+
+    for i in range(100):
+        decision_tree  = DecisionTree(training_file,purity, i + 1, ensemble_learning)
 
         if purity == "ada":
             #decision_tree.forest_size = 1
             decision_tree.max_depth = 1
+            
             decision_tree.information_gain_method = "gini"    
             forest = decision_tree.adaboost()
             training_error_percentage = calculate_error_percentage(decision_tree.training_set, forest, decision_tree)
             test_error_percentage = calculate_error_percentage(read_data(test_file, decision_tree.attributes), forest, decision_tree)
+            print(str(i) + "," + str(training_error_percentage) + "," + str(test_error_percentage))
     
         else: 
             root = decision_tree.id3_algorithm(decision_tree.training_set, decision_tree.attributes, 0)
             print(root)
     
-    f.close()
+
         
 if __name__ == "__main__":
     main()
