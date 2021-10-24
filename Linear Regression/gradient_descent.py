@@ -37,18 +37,30 @@ def gradient_descent(data, w, b , lr):
                         y = x[-1]
                         wx = dot(w, x)
                         b_slope += -(y - wx -b)
+
                 
                 ss = [lr * g for g in gradient]
                 prev_weight = w 
                 w = subtract(w, ss)
                 b -= b_slope * lr
-                #print(w, b)
+                cost_function = 0
 
+                for x in data:
+                        y = x[-1]
+                        wx = dot(w, x)
+                        cost_function += (y - wx -b) ** 2
+
+                cost_function /= 2
+                #f = open("cost_function.csv", "a")
+                #f.write(str(cost_function) + "\n")
+                #f.close()
+
+                #print(w, b)
                 weight_delta = subtract(prev_weight, w)
                 threshold = 10e-6
 
                 if magnitude(weight_delta) < threshold:
-                        return step
+                        return w
                 
         return step
 
@@ -71,13 +83,19 @@ def main():
 
         w = [0] * 7
         b = 0
-        lr = 1
-        r = 9999
-        while r == 9999:
-                print(lr)
-                r = gradient_descent(data, w, b, lr)
-                lr = lr/2
-        print(r)
+        lr = 0.0078125
+        #while r == 9999:
+        weight = gradient_descent(data, w, b, lr)
+        print(weight)
+
+        cost_function = 0
+        test_data = read_data(test_file)
+        for x in test_data:
+                y = x[-1]
+                wx = dot(weight, x)
+                cost_function += (y - wx -b) ** 2
+        cost_function /= 2
+        print(cost_function)
 
 if __name__ == "__main__":
     main()
