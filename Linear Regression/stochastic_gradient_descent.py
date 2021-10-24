@@ -85,13 +85,13 @@ def main():
         test_file = os.path.join("concrete","test.csv")
 
         data = read_data(train_file)
-
+        print(data)
         w = [0] * 7
         b = 0
         lr = 0.003125
 
         weight = gradient_descent(data, w, b, lr)
-        print(weight)
+        #print(weight)
 
         """
         weight = 9999
@@ -109,7 +109,7 @@ def main():
                 wx = dot(weight, x)
                 cost_function += (y - wx -b) ** 2
         cost_function /= 2
-        print(cost_function)
+        #print(cost_function)
         
 
 if __name__ == "__main__":
