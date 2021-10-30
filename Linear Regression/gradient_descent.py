@@ -95,7 +95,7 @@ def main():
                 wx = dot(weight, x)
                 cost_function += (y - wx -b) ** 2
         cost_function /= 2
-        print(cost_function)
+        print("cost function:",cost_function)
 
 if __name__ == "__main__":
     main()
