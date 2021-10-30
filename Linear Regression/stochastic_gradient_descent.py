@@ -91,15 +91,14 @@ def main():
         lr = 0.003125
 
         weight = gradient_descent(data, w, b, lr)
-        #print(weight)
+        print(weight)
 
-        """
         weight = 9999
         while weight == 9999:
                 print(lr)
                 weight = gradient_descent(data, w, b, lr)
                 lr /=2
-        """  
+     
 
         weight = [-0.005295317011470618, 0.004810033398940123, -0.02090702863439017, 0.10627116810099517, -0.00822561103711401, -0.032258014129808533, -0.01217284177512961]
         cost_function = 0
@@ -109,7 +108,7 @@ def main():
                 wx = dot(weight, x)
                 cost_function += (y - wx -b) ** 2
         cost_function /= 2
-        #print(cost_function)
+        print(cost_function)
         
 
 if __name__ == "__main__":
