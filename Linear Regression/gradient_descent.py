@@ -51,11 +51,12 @@ def gradient_descent(data, w, b , lr):
                         cost_function += (y - wx -b) ** 2
 
                 cost_function /= 2
+                print("cost function:", cost_function, step)
                 #f = open("cost_function.csv", "a")
                 #f.write(str(cost_function) + "\n")
                 #f.close()
 
-                print(w, b)
+                #print(w, b)
                 weight_delta = subtract(prev_weight, w)
                 threshold = 10e-6
 
