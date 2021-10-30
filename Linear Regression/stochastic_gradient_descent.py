@@ -93,6 +93,8 @@ def main():
         weight = gradient_descent(data, w, b, lr)
         print(weight)
 
+
+        lr = 1
         weight = 9999
         while weight == 9999:
                 print(lr)
