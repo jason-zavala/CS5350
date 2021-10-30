@@ -1,1 +1,2 @@
 python3 gradient_descent.py
+python3 stochastic_gradient_descent.py
