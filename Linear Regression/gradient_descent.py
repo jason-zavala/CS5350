@@ -55,7 +55,7 @@ def gradient_descent(data, w, b , lr):
                 #f.write(str(cost_function) + "\n")
                 #f.close()
 
-                #print(w, b)
+                print(w, b)
                 weight_delta = subtract(prev_weight, w)
                 threshold = 10e-6
 
