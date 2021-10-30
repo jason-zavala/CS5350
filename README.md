@@ -26,3 +26,22 @@ Update:
 Passing "random" or "bag" for the third argument will run using the bagged trees algorithm / random forests method respectively. 
 
 
+update: 
+Ensemble Learning: 
+
+to run my decisionTree_bankHeist.py use:
+
+python3 decisionTree_bankHeist.py ada 1 bag
+
+
+the first argument tells it to use the adaboost algorithm
+the second argument tells the depth of the tree
+the third argument is the type of ensemble method (random, boost, bag)
+
+Examples:
+python3 decisionTree_bankHeist.py ada 1 random
+python3 decisionTree_bankHeist.py ada 2 bag
+python3 decisionTree_bankHeist.py ada 122 boost
+
+
+
