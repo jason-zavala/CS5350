@@ -143,13 +143,15 @@ def main():
         #Voted method for HW: 
         learned_weight = perceptron_voted(data_training, w, lr, epoch)
         for i, weight in enumerate(learned_weight):
-            f = open("voted_weights.txt", "a")
-            f.write("Iteration: " + str( 1 + i) + "\n")
-            f.write("Weight vectors: " + str([round(num, 3) for num in weight[0]]) + "\n")
-            f.write("C_m: " + str(weight[1]) +  "\n\n")
-            f.close()
-            #print("Learning weight vector for training data (using Voted perceptron method): ", [round(num, 3) for num in weight[0]])
-            #print("C_M value:", weight[1], "\n")
+            # this was left here as documentation of how I logged it. For grading porpoises I left it in and will just print the learning weight vectors 
+            
+            #f = open("voted_weights.txt", "a")
+            #f.write("Iteration: " + str( 1 + i) + "\n")
+            #f.write("Weight vectors: " + str([round(num, 3) for num in weight[0]]) + "\n")
+            #f.write("C_m: " + str(weight[1]) +  "\n\n")
+            #f.close()
+            print("Learning weight vector for training data (using Voted perceptron method): ", [round(num, 3) for num in weight[0]])
+            print("C_M value:", weight[1], "\n")
 
         # Next pt
         error = 0
