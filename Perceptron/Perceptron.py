@@ -28,7 +28,7 @@ def scalar_multiplication(s, vec):
     return vec
 
 def perceptron(data, w, learning_rate, epoch):
-
+    print("running standard...")
     # swap all 0's in the final colum for -1's 
     for d in data: 
         if d[-1] == 0:
@@ -47,7 +47,7 @@ def perceptron(data, w, learning_rate, epoch):
     return w
 
 def perceptron_voted(data, w, learning_rate, epoch):
-    
+    print("running voted...")
     m = 0
     C_m = 0
     weights = []
@@ -82,7 +82,8 @@ def perceptron_voted(data, w, learning_rate, epoch):
     return weights
 
 def perceptron_average(data, w, learning_rate, epoch):
-
+    print("running average...")
+    a = w
     # swap all 0's in the final colum for -1's 
     for d in data: 
         if d[-1] == 0:
@@ -97,7 +98,9 @@ def perceptron_average(data, w, learning_rate, epoch):
 
             if genuine_or_forged * prediction <= 0: 
                 w = add(w, scalar_multiplication(learning_rate * genuine_or_forged, d))
-    return w
+            a = add(a, w)
+
+    return a
 
 def main():
     perceptron_method = "standard" if len(sys.argv) == 1 else sys.argv[1]
@@ -139,9 +142,14 @@ def main():
     elif perceptron_method == "voted":
         #Voted method for HW: 
         learned_weight = perceptron_voted(data_training, w, lr, epoch)
-        for weight in learned_weight:
-            print("Learning weight vector for training data (using Voted perceptron method): ", [round(num, 3) for num in weight[0]])
-            print("C_M value:", weight[1], "\n")
+        for i, weight in enumerate(learned_weight):
+            f = open("voted_weights.txt", "a")
+            f.write("Iteration: " + str( 1 + i) + "\n")
+            f.write("Weight vectors: " + str([round(num, 3) for num in weight[0]]) + "\n")
+            f.write("C_m: " + str(weight[1]) +  "\n\n")
+            f.close()
+            #print("Learning weight vector for training data (using Voted perceptron method): ", [round(num, 3) for num in weight[0]])
+            #print("C_M value:", weight[1], "\n")
 
         # Next pt
         error = 0
@@ -164,9 +172,30 @@ def main():
                 error+=1
 
         print("Average prediction error:", round(error/len(data_testing) * 100), "%\n")
-        
+
     elif perceptron_method == "average":
-        print("average")
+     #HW 2a: 
+        learned_weight = perceptron_average(data_training, w, lr, epoch)
+        print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
+
+        # Next pt
+        error = 0
+        #swap out all the 0's for -1's
+        for d in data_testing: 
+            if d[-1] == 0:
+                d[-1] = -1
+
+        for d in data_testing: 
+            gen_or_forg = d[-1]
+
+            d[-1] = 1
+
+            prediction = dot(learned_weight, d)
+
+            if gen_or_forg * prediction <= 0:
+                error+=1
+
+        print("Average prediction error:", round(error/len(data_testing) * 100), "%\n")
     else:
         print("invalid command")
         sys.exit(0)

@@ -1,0 +1,916 @@
+Iteration: 1
+Weight vectors: [0, 0, 0, 0, 0]
+C_m: 0
+
+Iteration: 2
+Weight vectors: [-0.385, -1.015, 0.386, 0.422, -0.1]
+C_m: 0
+
+Iteration: 3
+Weight vectors: [-0.38, -0.855, -0.462, 0.347, -0.2]
+C_m: 2
+
+Iteration: 4
+Weight vectors: [-0.507, -0.573, -0.705, 0.158, -0.1]
+C_m: 1
+
+Iteration: 5
+Weight vectors: [-0.712, -0.189, -0.784, 0.037, 0.0]
+C_m: 8
+
+Iteration: 6
+Weight vectors: [-1.039, -1.463, 0.772, 0.023, 0.1]
+C_m: 3
+
+Iteration: 7
+Weight vectors: [-1.431, -1.056, 0.748, -0.189, 0.2]
+C_m: 7
+
+Iteration: 8
+Weight vectors: [-1.778, -0.649, 0.319, -0.343, 0.1]
+C_m: 5
+
+Iteration: 9
+Weight vectors: [-1.766, -0.491, -0.484, -0.34, 0.0]
+C_m: 9
+
+Iteration: 10
+Weight vectors: [-1.621, -0.13, -0.889, -0.5, 0.1]
+C_m: 10
+
+Iteration: 11
+Weight vectors: [-2.088, -0.697, 0.207, -0.533, 0.2]
+C_m: 2
+
+Iteration: 12
+Weight vectors: [-1.824, -1.71, 0.341, 0.014, 0.1]
+C_m: 1
+
+Iteration: 13
+Weight vectors: [-1.812, -1.388, -0.002, -0.271, 0.2]
+C_m: 3
+
+Iteration: 14
+Weight vectors: [-2.071, -1.002, -0.036, -0.399, 0.3]
+C_m: 1
+
+Iteration: 15
+Weight vectors: [-2.059, -0.979, -0.083, -0.302, 0.4]
+C_m: 8
+
+Iteration: 16
+Weight vectors: [-2.108, -0.695, -0.447, -0.612, 0.5]
+C_m: 2
+
+Iteration: 17
+Weight vectors: [-1.888, -0.24, -0.945, -0.884, 0.6]
+C_m: 10
+
+Iteration: 18
+Weight vectors: [-2.291, -1.07, 0.31, -1.035, 0.7]
+C_m: 2
+
+Iteration: 19
+Weight vectors: [-2.28, -0.873, -0.026, -1.101, 0.8]
+C_m: 3
+
+Iteration: 20
+Weight vectors: [-2.249, -0.855, -0.202, -1.052, 0.9]
+C_m: 14
+
+Iteration: 21
+Weight vectors: [-2.189, -0.662, -0.531, -1.084, 1.0]
+C_m: 6
+
+Iteration: 22
+Weight vectors: [-2.084, -0.544, -0.795, -1.073, 1.1]
+C_m: 11
+
+Iteration: 23
+Weight vectors: [-2.089, -1.249, -0.589, -0.758, 1.0]
+C_m: 17
+
+Iteration: 24
+Weight vectors: [-2.203, -0.875, -1.147, -0.695, 0.9]
+C_m: 27
+
+Iteration: 25
+Weight vectors: [-1.939, -1.888, -1.014, -0.147, 0.8]
+C_m: 30
+
+Iteration: 26
+Weight vectors: [-1.842, -1.504, -1.507, -0.561, 0.9]
+C_m: 3
+
+Iteration: 27
+Weight vectors: [-1.875, -1.059, -1.964, -0.462, 0.8]
+C_m: 12
+
+Iteration: 28
+Weight vectors: [-2.046, -1.536, -1.343, -0.422, 0.9]
+C_m: 6
+
+Iteration: 29
+Weight vectors: [-1.99, -1.567, -1.325, -0.377, 1.0]
+C_m: 7
+
+Iteration: 30
+Weight vectors: [-2.042, -1.241, -1.634, -0.279, 0.9]
+C_m: 31
+
+Iteration: 31
+Weight vectors: [-2.356, -2.545, -0.066, -0.345, 1.0]
+C_m: 13
+
+Iteration: 32
+Weight vectors: [-2.529, -2.098, -0.888, -0.164, 0.9]
+C_m: 2
+
+Iteration: 33
+Weight vectors: [-3.233, -1.178, -0.862, -0.633, 1.0]
+C_m: 1
+
+Iteration: 34
+Weight vectors: [-3.065, -0.757, -1.316, -0.872, 1.1]
+C_m: 30
+
+Iteration: 35
+Weight vectors: [-2.93, -0.651, -1.551, -0.832, 1.2]
+C_m: 53
+
+Iteration: 36
+Weight vectors: [-3.28, -1.908, -0.035, -0.907, 1.3]
+C_m: 15
+
+Iteration: 37
+Weight vectors: [-3.107, -1.512, -0.509, -1.157, 1.4]
+C_m: 24
+
+Iteration: 38
+Weight vectors: [-3.289, -0.865, -1.314, -1.116, 1.3]
+C_m: 18
+
+Iteration: 39
+Weight vectors: [-3.21, -1.822, -0.935, -0.365, 1.2]
+C_m: 17
+
+Iteration: 40
+Weight vectors: [-3.06, -1.626, -1.241, -0.377, 1.3]
+C_m: 5
+
+Iteration: 41
+Weight vectors: [-2.959, -1.535, -1.476, -0.335, 1.4]
+C_m: 18
+
+Iteration: 42
+Weight vectors: [-2.719, -1.08, -1.975, -0.625, 1.5]
+C_m: 104
+
+Iteration: 43
+Weight vectors: [-3.08, -1.677, -0.966, -0.707, 1.6]
+C_m: 21
+
+Iteration: 44
+Weight vectors: [-3.064, -1.031, -1.802, -0.555, 1.5]
+C_m: 27
+
+Iteration: 45
+Weight vectors: [-3.433, -2.399, -0.044, -0.817, 1.6]
+C_m: 27
+
+Iteration: 46
+Weight vectors: [-3.344, -1.921, -0.528, -1.376, 1.7]
+C_m: 12
+
+Iteration: 47
+Weight vectors: [-3.396, -1.595, -0.837, -1.278, 1.6]
+C_m: 1
+
+Iteration: 48
+Weight vectors: [-3.429, -1.149, -1.294, -1.179, 1.5]
+C_m: 113
+
+Iteration: 49
+Weight vectors: [-3.226, -0.964, -1.595, -1.179, 1.6]
+C_m: 1
+
+Iteration: 50
+Weight vectors: [-3.189, -1.793, -1.403, -0.845, 1.5]
+C_m: 10
+
+Iteration: 51
+Weight vectors: [-2.988, -1.613, -1.699, -0.824, 1.6]
+C_m: 28
+
+Iteration: 52
+Weight vectors: [-2.866, -1.404, -2.018, -0.811, 1.7]
+C_m: 48
+
+Iteration: 53
+Weight vectors: [-2.787, -2.36, -1.64, -0.061, 1.6]
+C_m: 7
+
+Iteration: 54
+Weight vectors: [-3.421, -1.432, -1.638, -0.739, 1.7]
+C_m: 29
+
+Iteration: 55
+Weight vectors: [-3.417, -1.422, -1.642, -0.744, 1.69]
+C_m: 7
+
+Iteration: 56
+Weight vectors: [-3.016, -1.376, -1.506, -0.582, 1.79]
+C_m: 1
+
+Iteration: 57
+Weight vectors: [-3.016, -1.377, -1.498, -0.581, 1.78]
+C_m: 1
+
+Iteration: 58
+Weight vectors: [-2.796, -0.778, -1.445, -0.496, 1.88]
+C_m: 2
+
+Iteration: 59
+Weight vectors: [-2.222, -0.25, -1.671, -0.489, 1.98]
+C_m: 1
+
+Iteration: 60
+Weight vectors: [-1.86, -0.151, -1.602, -0.425, 2.08]
+C_m: 1
+
+Iteration: 61
+Weight vectors: [-1.513, -0.543, -1.204, -0.389, 2.18]
+C_m: 2
+
+Iteration: 62
+Weight vectors: [-1.08, -0.902, -0.835, -0.314, 2.28]
+C_m: 1
+
+Iteration: 63
+Weight vectors: [-0.59, -1.237, -0.493, -0.205, 2.38]
+C_m: 3
+
+Iteration: 64
+Weight vectors: [-0.572, -0.587, -0.292, -0.292, 2.48]
+C_m: 4
+
+Iteration: 65
+Weight vectors: [-0.335, 0.162, -0.29, -0.466, 2.58]
+C_m: 8
+
+Iteration: 66
+Weight vectors: [-0.331, 0.158, -0.286, -0.465, 2.57]
+C_m: 2
+
+Iteration: 67
+Weight vectors: [-0.691, -1.208, 1.474, -0.714, 2.67]
+C_m: 7
+
+Iteration: 68
+Weight vectors: [-0.539, -0.638, 1.484, -0.717, 2.77]
+C_m: 1
+
+Iteration: 69
+Weight vectors: [-0.54, -0.64, 1.492, -0.717, 2.76]
+C_m: 1
+
+Iteration: 70
+Weight vectors: [-0.289, 0.044, 1.489, -0.672, 2.86]
+C_m: 6
+
+Iteration: 71
+Weight vectors: [-0.291, 0.055, 1.488, -0.677, 2.85]
+C_m: 7
+
+Iteration: 72
+Weight vectors: [0.222, 0.922, 1.198, -0.828, 2.95]
+C_m: 7
+
+Iteration: 73
+Weight vectors: [0.222, 0.929, 1.196, -0.831, 2.94]
+C_m: 70
+
+Iteration: 74
+Weight vectors: [0.223, 0.925, 1.202, -0.832, 2.93]
+C_m: 27
+
+Iteration: 75
+Weight vectors: [0.22, 0.935, 1.201, -0.838, 2.92]
+C_m: 30
+
+Iteration: 76
+Weight vectors: [0.221, 0.931, 1.205, -0.839, 2.91]
+C_m: 15
+
+Iteration: 77
+Weight vectors: [0.221, 0.927, 1.208, -0.84, 2.9]
+C_m: 44
+
+Iteration: 78
+Weight vectors: [0.223, 0.923, 1.217, -0.841, 2.89]
+C_m: 15
+
+Iteration: 79
+Weight vectors: [0.225, 0.916, 1.225, -0.842, 2.88]
+C_m: 141
+
+Iteration: 80
+Weight vectors: [0.224, 0.926, 1.221, -0.849, 2.87]
+C_m: 17
+
+Iteration: 81
+Weight vectors: [0.224, 0.92, 1.229, -0.851, 2.86]
+C_m: 175
+
+Iteration: 82
+Weight vectors: [0.224, 0.916, 1.232, -0.852, 2.85]
+C_m: 40
+
+Iteration: 83
+Weight vectors: [0.225, 0.912, 1.237, -0.853, 2.84]
+C_m: 113
+
+Iteration: 84
+Weight vectors: [0.224, 0.92, 1.235, -0.856, 2.83]
+C_m: 11
+
+Iteration: 85
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.82]
+C_m: 83
+
+Iteration: 86
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.819]
+C_m: 36
+
+Iteration: 87
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.818]
+C_m: 2
+
+Iteration: 88
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.817]
+C_m: 24
+
+Iteration: 89
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.816]
+C_m: 9
+
+Iteration: 90
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.815]
+C_m: 13
+
+Iteration: 91
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.814]
+C_m: 77
+
+Iteration: 92
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.813]
+C_m: 27
+
+Iteration: 93
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.812]
+C_m: 30
+
+Iteration: 94
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.811]
+C_m: 15
+
+Iteration: 95
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.81]
+C_m: 44
+
+Iteration: 96
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.809]
+C_m: 15
+
+Iteration: 97
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.808]
+C_m: 141
+
+Iteration: 98
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.807]
+C_m: 17
+
+Iteration: 99
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.806]
+C_m: 175
+
+Iteration: 100
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.805]
+C_m: 40
+
+Iteration: 101
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.804]
+C_m: 113
+
+Iteration: 102
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.803]
+C_m: 11
+
+Iteration: 103
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.802]
+C_m: 83
+
+Iteration: 104
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.802]
+C_m: 36
+
+Iteration: 105
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.802]
+C_m: 2
+
+Iteration: 106
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.802]
+C_m: 24
+
+Iteration: 107
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.802]
+C_m: 9
+
+Iteration: 108
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.802]
+C_m: 13
+
+Iteration: 109
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.801]
+C_m: 77
+
+Iteration: 110
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.801]
+C_m: 27
+
+Iteration: 111
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.801]
+C_m: 30
+
+Iteration: 112
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.801]
+C_m: 15
+
+Iteration: 113
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.801]
+C_m: 44
+
+Iteration: 114
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.801]
+C_m: 15
+
+Iteration: 115
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.801]
+C_m: 141
+
+Iteration: 116
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.801]
+C_m: 17
+
+Iteration: 117
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.801]
+C_m: 175
+
+Iteration: 118
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.801]
+C_m: 40
+
+Iteration: 119
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 113
+
+Iteration: 120
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 11
+
+Iteration: 121
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 83
+
+Iteration: 122
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 36
+
+Iteration: 123
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 2
+
+Iteration: 124
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 24
+
+Iteration: 125
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 9
+
+Iteration: 126
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 13
+
+Iteration: 127
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 77
+
+Iteration: 128
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 27
+
+Iteration: 129
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 30
+
+Iteration: 130
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 131
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 44
+
+Iteration: 132
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 133
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 141
+
+Iteration: 134
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 17
+
+Iteration: 135
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 175
+
+Iteration: 136
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 40
+
+Iteration: 137
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 113
+
+Iteration: 138
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 11
+
+Iteration: 139
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 83
+
+Iteration: 140
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 36
+
+Iteration: 141
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 2
+
+Iteration: 142
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 24
+
+Iteration: 143
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 9
+
+Iteration: 144
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 13
+
+Iteration: 145
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 77
+
+Iteration: 146
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 27
+
+Iteration: 147
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 30
+
+Iteration: 148
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 149
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 44
+
+Iteration: 150
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 151
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 141
+
+Iteration: 152
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 17
+
+Iteration: 153
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 175
+
+Iteration: 154
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 40
+
+Iteration: 155
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 113
+
+Iteration: 156
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 11
+
+Iteration: 157
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 83
+
+Iteration: 158
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 36
+
+Iteration: 159
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 2
+
+Iteration: 160
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 24
+
+Iteration: 161
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 9
+
+Iteration: 162
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 13
+
+Iteration: 163
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 77
+
+Iteration: 164
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 27
+
+Iteration: 165
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 30
+
+Iteration: 166
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 167
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 44
+
+Iteration: 168
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 169
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 141
+
+Iteration: 170
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 17
+
+Iteration: 171
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 175
+
+Iteration: 172
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 40
+
+Iteration: 173
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 113
+
+Iteration: 174
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 11
+
+Iteration: 175
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 83
+
+Iteration: 176
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 36
+
+Iteration: 177
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 2
+
+Iteration: 178
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 24
+
+Iteration: 179
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 9
+
+Iteration: 180
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 13
+
+Iteration: 181
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 77
+
+Iteration: 182
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 27
+
+Iteration: 183
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 30
+
+Iteration: 184
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 185
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 44
+
+Iteration: 186
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 187
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 141
+
+Iteration: 188
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 17
+
+Iteration: 189
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 175
+
+Iteration: 190
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 40
+
+Iteration: 191
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 113
+
+Iteration: 192
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 11
+
+Iteration: 193
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 83
+
+Iteration: 194
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 36
+
+Iteration: 195
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 2
+
+Iteration: 196
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 24
+
+Iteration: 197
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 9
+
+Iteration: 198
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 13
+
+Iteration: 199
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 77
+
+Iteration: 200
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 27
+
+Iteration: 201
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 30
+
+Iteration: 202
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 203
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 44
+
+Iteration: 204
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 205
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 141
+
+Iteration: 206
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 17
+
+Iteration: 207
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 175
+
+Iteration: 208
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 40
+
+Iteration: 209
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 113
+
+Iteration: 210
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 11
+
+Iteration: 211
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 83
+
+Iteration: 212
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 36
+
+Iteration: 213
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 2
+
+Iteration: 214
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 24
+
+Iteration: 215
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 9
+
+Iteration: 216
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 13
+
+Iteration: 217
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 77
+
+Iteration: 218
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 27
+
+Iteration: 219
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 30
+
+Iteration: 220
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 221
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 44
+
+Iteration: 222
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 15
+
+Iteration: 223
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 141
+
+Iteration: 224
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 17
+
+Iteration: 225
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 175
+
+Iteration: 226
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 40
+
+Iteration: 227
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 113
+
+Iteration: 228
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 11
+
+Iteration: 229
+Weight vectors: [0.223, 0.93, 1.231, -0.864, 2.8]
+C_m: 83
+
