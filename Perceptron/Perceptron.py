@@ -100,7 +100,7 @@ def perceptron_average(data, w, learning_rate, epoch):
     return w
 
 def main():
-    #perceptron_method = "1" if len(sys.argv[1]) == 1 else "2"
+    perceptron_method = "standard" if len(sys.argv) == 1 else sys.argv[1]
 
     train_file = os.path.join("bank-note","train.csv")
     test_file = os.path.join("bank-note","test.csv")
@@ -108,35 +108,41 @@ def main():
     data_training = read_file(train_file)
     data_testing = read_file(test_file)
 
-
-    #HW 2 2a: 
-    w = [-1] * len(data_training[0]) # fold b into w 
+    w = [0] * len(data_training[0]) # fold b into w 
     lr = 0.1
     epoch = 10 # t
 
-    learned_weight = perceptron_voted(data_training, w, lr, epoch)
-    print(learned_weight)
-    learned_weight = learned_weight[0][0]
-    print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
+    if perceptron_method == "standard":
+        #HW 2 2a: 
+        learned_weight = perceptron(data_training, w, lr, epoch)
+        print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
 
-    # Next pt
-    error=0
-    #swap out all the 0's for -1's
-    for d in data_testing: 
-        if d[-1] == 0:
-            d[-1] = -1
+        # Next pt
+        error = 0
+        #swap out all the 0's for -1's
+        for d in data_testing: 
+            if d[-1] == 0:
+                d[-1] = -1
 
-    for d in data_testing: 
-        gen_or_forg = d[-1]
+        for d in data_testing: 
+            gen_or_forg = d[-1]
 
-        d[-1] = 1
+            d[-1] = 1
 
-        prediction = dot(learned_weight, d)
+            prediction = dot(learned_weight, d)
 
-        if gen_or_forg * prediction <= 0:
-            error+=1
+            if gen_or_forg * prediction <= 0:
+                error+=1
+
+        print("Average prediction error:", round(error/len(data_testing) * 100), "%\n")
     
-    print("Average prediction error:", round(error/len(data_testing) * 100), "%\n")
+    elif perceptron_method == "voted":
+        print()
+    elif perceptron_method == "average":
+        print()
+    else:
+        print("invalid command")
+        sys.exit(0)
 
 if __name__ == "__main__":
     main()
