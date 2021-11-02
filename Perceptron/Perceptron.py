@@ -143,7 +143,6 @@ def main():
             print("Learning weight vector for training data (using Voted perceptron method): ", [round(num, 3) for num in weight[0]])
             print("C_M value:", weight[1], "\n")
 
-        sys.exit(0) 
         # Next pt
         error = 0
         #swap out all the 0's for -1's
@@ -155,13 +154,17 @@ def main():
             gen_or_forg = d[-1]
 
             d[-1] = 1
+            final_prediction = 0
+            for weight in learned_weight: 
+                prediction = dot(weight[0], d)
+                sgn = 1 if prediction > 0 else -1
+                final_prediction += sgn * weight[1] # note this is the scaled weight
 
-            prediction = dot(learned_weight, d)
-
-            if gen_or_forg * prediction <= 0:
+            if gen_or_forg * final_prediction <= 0:
                 error+=1
 
         print("Average prediction error:", round(error/len(data_testing) * 100), "%\n")
+        
     elif perceptron_method == "average":
         print("average")
     else:
