@@ -51,7 +51,7 @@ def perceptron_voted(data, w, learning_rate, epoch):
     m = 0
     C_m = 0
     weights = []
-    weights.append(w)
+    weights.append((w, C_m))
     
 
 
@@ -65,11 +65,17 @@ def perceptron_voted(data, w, learning_rate, epoch):
         for d in data: 
             genuine_or_forged = d[-1] # capturing the last colum, per the data desc this is the genuine or forged value
             d[-1] = 1 # fold b into x
-            prediction = dot(weights[m], d)  
+            prediction = dot(weights[m][0], d)  
 
             
             if genuine_or_forged * prediction <= 0: 
-                weights.append(add(weights[m], scalar_multiplication(learning_rate * genuine_or_forged, d)))
+
+                if len(weights) == 1 : 
+                    weights[0] =  (w, C_m)
+
+                weights.append((add(weights[m][0], scalar_multiplication(learning_rate * genuine_or_forged, d)), C_m))
+                m+=1 # incr out counter
+                C_m = 1 # reset C-m
             else: 
                 #C_m ++
                 C_m += 1
@@ -94,9 +100,8 @@ def perceptron_average(data, w, learning_rate, epoch):
     return w
 
 def main():
+    #perceptron_method = "1" if len(sys.argv[1]) == 1 else "2"
 
-
-    # perceptron_method = "perc" if sys.argv[1] == "" else "standard"
     train_file = os.path.join("bank-note","train.csv")
     test_file = os.path.join("bank-note","test.csv")
 
@@ -105,12 +110,13 @@ def main():
 
 
     #HW 2 2a: 
-    w = [0] * len(data_training[0]) # fold b into w 
+    w = [-1] * len(data_training[0]) # fold b into w 
     lr = 0.1
     epoch = 10 # t
 
-    learned_weight = perceptron_voted(data_training, w, lr, epoch)[0]
-
+    learned_weight = perceptron_voted(data_training, w, lr, epoch)
+    print(learned_weight)
+    learned_weight = learned_weight[0][0]
     print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
 
     # Next pt
