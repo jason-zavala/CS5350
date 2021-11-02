@@ -58,8 +58,9 @@ def main():
     lr = 0.1
     epoch = 10
 
-    optimal_weight = perceptron(data_training, w, lr, epoch)
-    print(optimal_weight)
+    learned_weight = perceptron(data_training, w, lr, epoch)
+
+    print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
 
 
 if __name__ == "__main__":
