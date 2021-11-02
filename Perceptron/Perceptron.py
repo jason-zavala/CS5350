@@ -113,7 +113,7 @@ def main():
     epoch = 10 # t
 
     if perceptron_method == "standard":
-        #HW 2 2a: 
+        #HW 2a: 
         learned_weight = perceptron(data_training, w, lr, epoch)
         print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
 
@@ -137,9 +137,33 @@ def main():
         print("Average prediction error:", round(error/len(data_testing) * 100), "%\n")
     
     elif perceptron_method == "voted":
-        print()
+        #Voted method for HW: 
+        learned_weight = perceptron_voted(data_training, w, lr, epoch)
+        for weight in learned_weight:
+            print("Learning weight vector for training data (using Voted perceptron method): ", [round(num, 3) for num in weight[0]])
+            print("C_M value:", weight[1], "\n")
+
+        sys.exit(0) 
+        # Next pt
+        error = 0
+        #swap out all the 0's for -1's
+        for d in data_testing: 
+            if d[-1] == 0:
+                d[-1] = -1
+
+        for d in data_testing: 
+            gen_or_forg = d[-1]
+
+            d[-1] = 1
+
+            prediction = dot(learned_weight, d)
+
+            if gen_or_forg * prediction <= 0:
+                error+=1
+
+        print("Average prediction error:", round(error/len(data_testing) * 100), "%\n")
     elif perceptron_method == "average":
-        print()
+        print("average")
     else:
         print("invalid command")
         sys.exit(0)
