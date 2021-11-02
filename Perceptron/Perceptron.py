@@ -15,6 +15,13 @@ def dot(a, b):
                 res += a[index] * b[index]
         return res
 
+def add(a, b):
+        res = []
+
+        for index in range(len(a)):
+                res.append(a[index] + b[index])
+        return res
+
 def scalar_multiplication(s, vec):
     for i in range(len(vec)):
             vec[i] = s * vec[i]
@@ -27,22 +34,16 @@ def perceptron(data, w, learning_rate, epoch):
         if d[-1] == 0:
             d[-1] = -1
     
-    for i in range(1):
+    for _ in range(epoch):
 
         for d in data: 
             genuine_or_forged = d[-1] # capturing the last colum, per the data desc this is the genuine or forged value
             d[-1] = 1 # fold b into x
             prediction = dot(w, d)  
 
-            print(prediction)
-            print(genuine_or_forged)
-
             if genuine_or_forged * prediction <= 0: 
-                print("sadly, this is misclassified big dog :-(") 
-                print(d)
-                print(learning_rate * genuine_or_forged)
-                w = scalar_multiplication(learning_rate * genuine_or_forged, d)
-                print(w, "\n")
+                w = add(w, scalar_multiplication(learning_rate * genuine_or_forged, d))
+    return w
 
 def main():
     train_file = os.path.join("bank-note","train.csv")
@@ -51,14 +52,14 @@ def main():
     data_training = read_file(train_file)
     data_testing = read_file(test_file)
 
-    fsize = len(data_training[0]) - 1
+    fsize = len(data_training[0])
 
-    w = [-1] * fsize
+    w = [0] * fsize
     lr = 0.1
     epoch = 10
 
-    optimal_weight = perceptron(data_testing, w, lr, epoch)
-    print()
+    optimal_weight = perceptron(data_training, w, lr, epoch)
+    print(optimal_weight)
 
 
 if __name__ == "__main__":
