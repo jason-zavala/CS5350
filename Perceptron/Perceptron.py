@@ -183,7 +183,7 @@ def main():
 
     elif perceptron_method == "average":
      #HW 2a: 
-        print("running average....")
+        
         learned_weight = perceptron_average(data_testing, w, lr, epoch)
         print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
 
