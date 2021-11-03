@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, random
 
 
 def read_file(csv):
@@ -35,7 +35,7 @@ def perceptron(data, w, learning_rate, epoch):
             d[-1] = -1
     
     for _ in range(epoch):
-
+        random.shuffle(data)
         for d in data: 
             genuine_or_forged = d[-1] # capturing the last colum, per the data desc this is the genuine or forged value
             d[-1] = 1 # fold b into x
@@ -61,7 +61,7 @@ def perceptron_voted(data, w, learning_rate, epoch):
             d[-1] = -1
     
     for _ in range(epoch):
-
+        random.shuffle(data)
         for d in data: 
             genuine_or_forged = d[-1] # capturing the last colum, per the data desc this is the genuine or forged value
             d[-1] = 1 # fold b into x
@@ -90,7 +90,7 @@ def perceptron_average(data, w, learning_rate, epoch):
             d[-1] = -1
     
     for _ in range(epoch):
-
+        random.shuffle(data)
         for d in data: 
             genuine_or_forged = d[-1] # capturing the last colum, per the data desc this is the genuine or forged value
             d[-1] = 1 # fold b into x
@@ -110,14 +110,14 @@ def main():
 
     data_training = read_file(train_file)
     data_testing = read_file(test_file)
-
+    
     w = [0] * len(data_training[0]) # fold b into w 
     lr = 0.1
     epoch = 10 # t
 
     if perceptron_method == "standard":
         #HW 2a: 
-        learned_weight = perceptron(data_training, w, lr, epoch)
+        learned_weight = perceptron(data_testing, w, lr, epoch)
         print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
 
         # Next pt
@@ -141,15 +141,21 @@ def main():
     
     elif perceptron_method == "voted":
         #Voted method for HW: 
-        learned_weight = perceptron_voted(data_training, w, lr, epoch)
+        learned_weight = perceptron_voted(data_testing, w, lr, epoch)
         for i, weight in enumerate(learned_weight):
             # this was left here as documentation of how I logged it. For grading porpoises I left it in and will just print the learning weight vectors 
-            
+
+            f = open("voted_weights.txt", "a")
+            f.write("Iteration: " + str( 1 + i) + "\n")
+            f.write("Weight vectors: " + str([round(num, 3) for num in weight[0]]) + "\n")
+            f.write("C_m: " + str(weight[1]) +  "\n\n")
+            f.close()
+
             #f = open("voted_weights.txt", "a")
-            #f.write("Iteration: " + str( 1 + i) + "\n")
-            #f.write("Weight vectors: " + str([round(num, 3) for num in weight[0]]) + "\n")
+            #f.write("\item Weight vectors: " + str([round(num, 3) for num in weight[0]]) + "\n")
             #f.write("C_m: " + str(weight[1]) +  "\n\n")
             #f.close()
+
             print("Learning weight vector for training data (using Voted perceptron method): ", [round(num, 3) for num in weight[0]])
             print("C_M value:", weight[1], "\n")
 
@@ -177,7 +183,7 @@ def main():
 
     elif perceptron_method == "average":
      #HW 2a: 
-        learned_weight = perceptron_average(data_training, w, lr, epoch)
+        learned_weight = perceptron_average(data_testing, w, lr, epoch)
         print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
 
         # Next pt

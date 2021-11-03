@@ -45,3 +45,25 @@ python3 decisionTree_bankHeist.py ada 122 boost
 
 
 
+Update: 
+
+To run the stochastic_gradient_descent.py use:
+
+python3 stochastic_gradient_descent.py
+
+To run normal gradient_descent.py use:
+python3 gradient_descent.py
+
+Update for Perceptron: 
+
+to run perceptron algorithm, the first argument needs to be the method for perceptron.
+The options are: standard, average, voted
+
+Example usage: 
+
+python3 Perceptron.py standard
+python3 Perceptron.py average
+python3 Perceptron.py voted
+
+
+
