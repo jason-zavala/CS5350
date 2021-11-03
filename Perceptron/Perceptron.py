@@ -118,7 +118,7 @@ def main():
     if perceptron_method == "standard":
         #HW 2a: 
         learned_weight = perceptron(data_testing, w, lr, epoch)
-        print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
+        print("Learning weight vector: ", [round(num, 3) for num in learned_weight] , "\n")
 
         # Next pt
         error = 0
@@ -156,7 +156,7 @@ def main():
             #f.write("C_m: " + str(weight[1]) +  "\n\n")
             #f.close()
 
-            print("Learning weight vector for training data (using Voted perceptron method): ", [round(num, 3) for num in weight[0]])
+            print("Learning weight vector: ", [round(num, 3) for num in weight[0]])
             print("C_M value:", weight[1], "\n")
 
         # Next pt
@@ -185,7 +185,7 @@ def main():
      #HW 2a: 
         
         learned_weight = perceptron_average(data_testing, w, lr, epoch)
-        print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
+        print("Learning weight vector: ", [round(num, 3) for num in learned_weight] , "\n")
 
         # Next pt
         error = 0
