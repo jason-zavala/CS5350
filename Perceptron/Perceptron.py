@@ -145,11 +145,11 @@ def main():
         for i, weight in enumerate(learned_weight):
             # this was left here as documentation of how I logged it. For grading porpoises I left it in and will just print the learning weight vectors 
 
-            f = open("voted_weights.txt", "a")
-            f.write("Iteration: " + str( 1 + i) + "\n")
-            f.write("Weight vectors: " + str([round(num, 3) for num in weight[0]]) + "\n")
-            f.write("C_m: " + str(weight[1]) +  "\n\n")
-            f.close()
+            #f = open("voted_weights.txt", "a")
+            #f.write("Iteration: " + str( 1 + i) + "\n")
+            #f.write("Weight vectors: " + str([round(num, 3) for num in weight[0]]) + "\n")
+            #f.write("C_m: " + str(weight[1]) +  "\n\n")
+            #f.close()
 
             #f = open("voted_weights.txt", "a")
             #f.write("\item Weight vectors: " + str([round(num, 3) for num in weight[0]]) + "\n")
@@ -183,6 +183,7 @@ def main():
 
     elif perceptron_method == "average":
      #HW 2a: 
+        print("running average....")
         learned_weight = perceptron_average(data_testing, w, lr, epoch)
         print("Learning weight vector for training data: ", [round(num, 3) for num in learned_weight] , "\n")
 
