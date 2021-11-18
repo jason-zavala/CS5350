@@ -4,6 +4,8 @@ echo "Jason Zavala proudly presents:"
 echo "HW4"
 echo "Section 2"
 echo "part 2a"
+echo " "
+
 python3 svm.py 0.114 0
 python3 svm.py 0.573 0
 python3 svm.py .802 0
