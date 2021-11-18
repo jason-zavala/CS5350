@@ -1,4 +1,4 @@
-import os, sys, random
+import os, sys, random, math, decimal, copy
 
 
 def read_file(csv):
@@ -14,46 +14,63 @@ def dot(a, b):
         for index in range(len(a)):
                 res += a[index] * b[index]
         return res
-def sub(a, b):
-        res = []
 
-        for index in range(len(a)):
-                res.append(a[index] - b[index])
-        return res
+def sub(a, b):
+    res = []
+
+    for index in range(len(a)):
+            res.append(a[index] - b[index])
+    return res
 
 def add(a, b):
-        res = []
+    res = []
 
-        for index in range(len(a)):
-                res.append(a[index] + b[index])
-        return res
+    for index in range(len(a)):
+            res.append(a[index] + b[index])
+    return res
 
-def scalar_multiplication(s, vec):
-    for i in range(len(vec)):
-            vec[i] = s * vec[i]
-    return vec
+def magnitude(a):
+        squared_sum = decimal.Decimal(0)
+        for val in a:
+                val = decimal.Decimal(val)
+                squared_sum += val ** 2
+        return math.sqrt(squared_sum)
 
-def svm(data, w, a, c, learning_rate, epoch):
+def scalar_multiplication(vec, s):
+    return [s * index for index in vec]
+
+def svm(data, w, a, c, learning_rate, t):
     print("Running SVM")
     # swap all 0's in the final colum for -1's 
+    SIZE = len(data)
     for d in data: 
         if d[-1] == 0:
             d[-1] = -1
 
-    w_0 = w[:-1] # w without the bias
 
-    for _ in range(epoch):
+    for epoch in range(t):
+        # update our learning rate, the whole point is that we update over each itr to get it converge
+        rate_learned = learning_rate / (1 + (learning_rate * epoch / a))
+        previous_weight = w # keep track so we can compare it to track delta_weight
         random.shuffle(data)
-        for d in data: 
+
+        for d in copy.deepcopy(data): 
+            w_0 = w[:-1] # w without the bias
             genuine_or_forged = d[-1] # capturing the last colum, per the data desc this is the genuine or forged value
             d[-1] = 1 # fold b into x
             prediction = dot(w, d)  
-
             #just check if it's misclassified, and if it is we update the weight_vector
             if genuine_or_forged * prediction <= 1: 
-                w = add(sub(w, scalar_multiplication(learning_rate, (w_0 + [0]))), scalar_multiplication(learning_rate*c*len(data)*genuine_or_forged, d))
+                add_left_side = sub(w, scalar_multiplication((w_0 + [0]), rate_learned))
+                add_right_side = scalar_multiplication(d, rate_learned * c * SIZE * genuine_or_forged)
+                w = add(add_left_side, add_right_side)
             else:
-                w[:-1] = scalar_multiplication(1- learning_rate, w[:-1]) 
+                w[:-1] = scalar_multiplication(w[:-1], 1 - rate_learned) 
+        # calculate delta weight
+        delta_weight = sub(previous_weight, w)
+        if magnitude(delta_weight) < 10e-3:
+            print("converged at:", epoch)
+            return w
 
     return w
 
@@ -64,14 +81,17 @@ def main():
 
     data_training = read_file(train_file)
     data_testing = read_file(test_file)
-    
-    w = [0] * len(data_training[0]) # fold b into w 
-    lr = 0.1
-    epoch = 10 # t
-    c = 100/873 #hyper parameter
-    a = 1 
+    #hyper parameter
+    c = float(100/873) if len(sys.argv) == 1 else float(sys.argv[1])
+    print("for C value:", c)
 
-    learned_weight = svm(data_testing, w, a, c, lr, epoch)
+
+    w  = [0] * len(data_training[0]) # initializt an array of length data_training full of just 0's
+    lr = 0.001 # learning rate
+    t  = 100 # t, although this is a bit confusing maybe I should name this something more pacific
+    a  = .001
+
+    learned_weight = svm(data_training, w, a, c, lr, t)
     print("Learning weight vector: ", [round(num, 3) for num in learned_weight] , "\n")
 
     # # Next pt
