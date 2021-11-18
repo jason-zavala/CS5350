@@ -6,21 +6,21 @@ echo "Section 2"
 echo "part 2a"
 echo " "
 
-echo "100/873"
+echo "C = 100/873"
 python3 svm.py 0.114 0
-echo "500/873"
+echo "C = 500/873"
 python3 svm.py 0.573 0
-echo "700/873"
+echo "C = 700/873"
 python3 svm.py .802 0
 
 echo " "
 echo "part 2b"
 echo " "
-echo "100/873"
+echo "C = 100/873"
 python3 svm.py 0.114 1
-echo "500/873"
+echo "C = 500/873"
 python3 svm.py 0.573 1
-echo "700/873"
+echo "C = 700/873"
 python3 svm.py .802 1
 echo " "
 
