@@ -40,7 +40,6 @@ def scalar_multiplication(vec, s):
     return [s * index for index in vec]
 
 def svm(data, w, a, c, learning_rate, t, schedule):
-    print("Running SVM")
     # swap all 0's in the final colum for -1's 
     SIZE = len(data)
     for d in data: 

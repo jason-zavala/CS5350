@@ -15,4 +15,4 @@ python3 svm.py 0.573 1
 python3 svm.py .802 1
 echo " "
 
-echo "HW4 Section 2 q2 part 3 \n"
+echo "HW4 Section 2 q2 part 3"
