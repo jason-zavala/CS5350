@@ -39,7 +39,7 @@ def magnitude(a):
 def scalar_multiplication(vec, s):
     return [s * index for index in vec]
 
-def svm(data, w, a, c, learning_rate, t):
+def svm(data, w, a, c, learning_rate, t, schedule):
     print("Running SVM")
     # swap all 0's in the final colum for -1's 
     SIZE = len(data)
@@ -50,8 +50,13 @@ def svm(data, w, a, c, learning_rate, t):
 
     for epoch in range(t):
         # update our learning rate, the whole point is that we update over each itr to get it converge
-        rate_learned = learning_rate / (1 + (learning_rate * epoch / a))
+        if schedule == 0:
+            rate_learned = learning_rate / (1 + (learning_rate * epoch / a))
+        else:
+            rate_learned = learning_rate/(epoch + 1)
         previous_weight = w # keep track so we can compare it to track delta_weight
+
+
         random.shuffle(data)
 
         for d in copy.deepcopy(data): 
@@ -74,44 +79,53 @@ def svm(data, w, a, c, learning_rate, t):
 
     return w
 
+def get_error(data, learned_weight):
+        # Next pt
+    error = 0
+    #swap out all the 0's for -1's
+    for d in data: 
+        if d[-1] == 0:
+            d[-1] = -1
+
+    for d in copy.deepcopy(data): 
+        gen_or_forg = d[-1]
+
+        d[-1] = 1
+
+        prediction = dot(learned_weight, d)
+
+        if gen_or_forg * prediction <= 0:
+            error+=1
+    return error/len(data)
+    
+
 def main():
 
+    schedule = 0 if len(sys.argv) <= 2 else float(sys.argv[2])
+    c = float(100/873) if len(sys.argv) == 1 else float(sys.argv[1])
+
+    #collecting our data
     train_file = os.path.join("bank-note","train.csv")
     test_file = os.path.join("bank-note","test.csv")
 
     data_training = read_file(train_file)
     data_testing = read_file(test_file)
-    #hyper parameter
-    c = float(100/873) if len(sys.argv) == 1 else float(sys.argv[1])
+    
+    
     print("for C value:", c)
 
 
     w  = [0] * len(data_training[0]) # initializt an array of length data_training full of just 0's
-    lr = 0.001 # learning rate
+    lr = 0.0001 # learning rate
     t  = 100 # t, although this is a bit confusing maybe I should name this something more pacific
-    a  = .001
+    a  = 0.0001
 
-    learned_weight = svm(data_training, w, a, c, lr, t)
+    learned_weight = svm(data_training, w, a, c, lr, t, schedule)
     print("Learning weight vector: ", [round(num, 3) for num in learned_weight] , "\n")
-
-    # # Next pt
-    # error = 0
-    # #swap out all the 0's for -1's
-    # for d in data_testing: 
-    #     if d[-1] == 0:
-    #         d[-1] = -1
-
-    # for d in data_testing: 
-    #     gen_or_forg = d[-1]
-
-    #     d[-1] = 1
-
-    #     prediction = dot(learned_weight, d)
-
-    #     if gen_or_forg * prediction <= 0:
-    #         error+=1
-
-    # print("Average prediction error:", round(error/len(data_testing) * 100), "%\n")
+    # get error percentage
+    print("Average prediction error for test data:", get_error(data_testing, learned_weight) )
+    print("Average prediction error for training data:", get_error(data_training, learned_weight))
+    
     
 
 if __name__ == "__main__":
