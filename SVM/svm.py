@@ -109,10 +109,6 @@ def main():
 
     data_training = read_file(train_file)
     data_testing = read_file(test_file)
-    
-    
-    print("for C value:", c)
-
 
     w  = [0] * len(data_training[0]) # initializt an array of length data_training full of just 0's
     lr = 0.0001 # learning rate
@@ -120,10 +116,10 @@ def main():
     a  = 0.0001
 
     learned_weight = svm(data_training, w, a, c, lr, t, schedule)
-    print("Learning weight vector: ", [round(num, 3) for num in learned_weight])
+    print("Learned weight vector: ", [round(num, 3) for num in learned_weight])
     # get error percentage
-    print("Average prediction error for test data:", get_error(data_testing, learned_weight) )
-    print("Average prediction error for training data:", get_error(data_training, learned_weight), "\n")
+    print("Test error    :", get_error(data_testing, learned_weight) )
+    print("Training error:", get_error(data_training, learned_weight), "\n")
     
     
 
