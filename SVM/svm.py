@@ -123,7 +123,7 @@ def main():
     print("Learning weight vector: ", [round(num, 3) for num in learned_weight])
     # get error percentage
     print("Average prediction error for test data:", get_error(data_testing, learned_weight) )
-    print("Average prediction error for training data:", get_error(data_training, learned_weight))
+    print("Average prediction error for training data:", get_error(data_training, learned_weight), "\n")
     
     
 
