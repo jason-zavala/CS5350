@@ -114,7 +114,7 @@ def constraint(alpha, *args):
     y = args[1]
     return np.sum(alpha * y)
 
-def dual_svm(data, w, a, c, learning_rate, t, schedule):
+def dual_svm(data, w,c):
 
     SIZE = len(data)
     x = np.matrix([data[d][:-1] for d in range(SIZE)])
@@ -127,8 +127,25 @@ def dual_svm(data, w, a, c, learning_rate, t, schedule):
     bounds = [(0, c)] * SIZE # we want to define our bounds from 0 -> c for every size
     constraints = [{'type' : 'eq', 'fun': constraint, 'args':args}]
 
-    optimal_alpha = opt.minimize(quad_convex_equation, init_guess, args, method, bounds = bounds, constraints = constraints)
-    print(optimal_alpha.x)
+    optimal_alpha = opt.minimize(quad_convex_equation, init_guess, args, method, bounds = bounds, constraints = constraints).x
+    #first find the number of support vectors uwu
+     # condition, true, else
+    law_and_order_SV = np.where(0 < optimal_alpha)[0] # we're just grabbing the first one 
+    print("Number of support vectors:", len(law_and_order_SV)) 
+
+    # now that we have optimal alpha we use it to get the weight vectors
+    alpha_y = (optimal_alpha * y)[0, 0]
+    w = np.sum( alpha_y * x, axis=0)
+    # now we want to calculate the bias, which is pretty similar:
+    alpha_y = (optimal_alpha * y)[0, 0]
+    bias = np.sum( alpha_y * (x*x.T))  
+
+    # put it back into the form we expect 
+    w = np.matrix.tolist(w)[0]
+    bias = np.matrix.tolist(bias)
+    # add bias back to weight 
+    w.append(bias)
+
     return w
 
 
@@ -138,7 +155,7 @@ def main():
     # SETUP RUNTIME ARGS
     c = float(100/873) if len(sys.argv) == 1 else float(sys.argv[1])
     schedule = 0 if len(sys.argv) <= 2 else float(sys.argv[2])
-    domain = "primal" if len(sys.argv) <= 3 else "dual"
+    domain = "primal" if len(sys.argv) <= 3 else sys.argv[3]
 
     #################################################################
 
@@ -153,7 +170,6 @@ def main():
     lr = 0.0001 # learning rate
     t  = 100 # t, although this is a bit confusing maybe I should name this something more pacific
     a  = 0.0001
-
     if domain == "primal":
         learned_weight = svm(data_training, w, a, c, lr, t, schedule)
         print("Learned weight vector: ", [round(num, 3) for num in learned_weight])
@@ -161,8 +177,12 @@ def main():
         print("Test error    :", get_error(data_testing, learned_weight) )
         print("Training error:", get_error(data_training, learned_weight), "\n")
     else:
-        learned_weight = dual_svm(data_training, w, a, c, lr, t, schedule)
-        sys.exit(0)
+        learned_weight = dual_svm(data_training, w, c)
+        print("Learned weight vector: ", [round(num, 3) for num in learned_weight])
+        # get error percentage
+        print("Test error    :", get_error(data_testing, learned_weight) )
+        print("Training error:", get_error(data_training, learned_weight), "\n")
+        
     
 
 
