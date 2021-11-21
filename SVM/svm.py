@@ -100,21 +100,24 @@ def svm(data, w, a, c, learning_rate, t, schedule):
     return w
 
 def quad_convex_equation(alpha, *args):
-    x = args[0]
-    y = args[1]
+    x     = args[0]
+    y     = args[1]
+    gamma = args[2]
 
-    xx = (x*x.T)
+    if gamma is None:
+        xx = (x*x.T)
+    else:
+        # is x-x not going to be 0?........................................
+        xx = np.exp(-np.sum(np.square(x - x)) / gamma) # gaussian kernel
     yy = (y*y.T)
-
-    yyaaxx = alpha.T.dot((xx*yy)[0, 0] * alpha)
     
-    return (0.5) *  yyaaxx - np.sum(alpha)
+    return (0.5) *  (alpha.T.dot((xx*yy)[0, 0] * alpha)) - np.sum(alpha)
 
 def constraint(alpha, *args):
     y = args[1]
     return np.sum(alpha * y)
 
-def dual_svm(data, w,c):
+def dual_svm(data, w, c, gamma):
 
     SIZE = len(data)
     x = np.matrix([data[d][:-1] for d in range(SIZE)])
@@ -122,7 +125,7 @@ def dual_svm(data, w,c):
     y = np.where(y == 0, -1, y) # condition, true, else
     
     init_guess = np.random.rand(SIZE)
-    args = (x, y)
+    args = (x, y, gamma)
     method = "SLSQP"
     bounds = [(0, c)] * SIZE # we want to define our bounds from 0 -> c for every size
     constraints = [{'type' : 'eq', 'fun': constraint, 'args':args}]
@@ -155,8 +158,8 @@ def main():
     # SETUP RUNTIME ARGS
     c = float(100/873) if len(sys.argv) == 1 else float(sys.argv[1])
     schedule = 0 if len(sys.argv) <= 2 else float(sys.argv[2])
-    domain = "primal" if len(sys.argv) <= 3 else sys.argv[3]
-
+    domain   = "primal" if len(sys.argv) <= 3 else sys.argv[3]
+    colonel  = "linear" if len(sys.argv) <= 4 else sys.argv[4]
     #################################################################
 
     #collecting our data
@@ -170,18 +173,35 @@ def main():
     lr = 0.0001 # learning rate
     t  = 100 # t, although this is a bit confusing maybe I should name this something more pacific
     a  = 0.0001
+    # this is for section 2 Q3b :( 
+    gees = [0.1, 0.5, 1, 5, 100] #DGs amirite
+
     if domain == "primal":
         learned_weight = svm(data_training, w, a, c, lr, t, schedule)
         print("Learned weight vector: ", [round(num, 3) for num in learned_weight])
         # get error percentage
         print("Test error    :", get_error(data_testing, learned_weight) )
         print("Training error:", get_error(data_training, learned_weight), "\n")
-    else:
-        learned_weight = dual_svm(data_training, w, c)
-        print("Learned weight vector: ", [round(num, 3) for num in learned_weight])
-        # get error percentage
-        print("Test error    :", get_error(data_testing, learned_weight) )
-        print("Training error:", get_error(data_training, learned_weight), "\n")
+    elif domain == "dual":
+
+        if colonel == "linear":
+            learned_weight = dual_svm(data_training, w, c, None)
+            print("Learned weight vector: ", [round(num, 3) for num in learned_weight])
+            # get error percentage
+            print("Test error    :", get_error(data_testing, learned_weight) )
+            print("Training error:", get_error(data_training, learned_weight), "\n")
+        elif colonel == "gaussian":
+            for gamma in gees:
+                print("Gamme value:", gamma)
+                learned_weight = dual_svm(data_training, w, c, gamma)
+                print("Learned weight vector: ", [round(num, 3) for num in learned_weight])
+                # get error percentage
+                print("Test error    :", get_error(data_testing, learned_weight) )
+                print("Training error:", get_error(data_training, learned_weight), "\n")
+        else: 
+            print("incorrect command uwu. Please refer to the README.md")
+    else: 
+            print("incorrect command uwu. Please refer to the README.md")
         
     
 
