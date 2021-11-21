@@ -41,7 +41,13 @@ echo "C = 700/873"
 python3 svm.py .802 0 dual
 echo " "
 echo "###########################################################"
-echo "                      PART 3a"
+echo "                      PART 3b"
 echo "###########################################################"
 echo " "
+echo "C = 100/873"
+python3 svm.py 0.114 0 dual gaussian
+echo "C = 500/873"
+python3 svm.py 0.573 0 dual gaussian
+echo "C = 700/873"
+python3 svm.py .802 0 dual gaussian
 
