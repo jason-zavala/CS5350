@@ -66,4 +66,20 @@ python3 Perceptron.py average
 python3 Perceptron.py voted
 
 
+Update for SVM: 
+
+To run the SVM algorithm you need 4 arguments: 
+
+1 - The hyperparameter *C*
+2 - The schedule version (*0* or *1*)
+3 - Which version *primal* or *dual* version of SVM
+4 - *linear* or *gaussian* kernel 
+
+**EXAMPLE USAGE**
+python3 svm.py 0.802 0 dual linear
+python3 svm.py 0.573 0 dual gaussian
+
+
+
+
 
