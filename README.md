@@ -66,7 +66,7 @@ python3 Perceptron.py average
 python3 Perceptron.py voted
 
 
-Update for SVM: 
+#Update for SVM: 
 
 To run the SVM algorithm you need 4 arguments: 
 
@@ -78,6 +78,18 @@ To run the SVM algorithm you need 4 arguments:
 **EXAMPLE USAGE**
 python3 svm.py 0.802 0 dual linear
 python3 svm.py 0.573 0 dual gaussian
+
+#Neural Netowrks
+
+To run the NN algorithm you need 1 argument:
+
+**EXAMPLE USAGE**
+*The following will run the back propogation algorithm:*
+python3 nn.py part_a
+*The following will run the stoch. gradient decscent verison:*
+python3 nn.py part_b
+*The following will initialize all the weights to 0:*
+python3 nn.py part_c
 
 
 
