@@ -267,7 +267,7 @@ def main():
 
             print("Learned weight vector:", [round(num, 3) for num in learned_w_val])
             print("Training error:", get_error(training_data, learned_weight))
-            print("Test error:", get_error(testing_data, learned_weight))
+            print("Test error:", get_error(testing_data, learned_weight), "\n")
 
 
 

@@ -11,7 +11,7 @@ echo " "
 
 echo "Back propagation"
 python3 nn.py part_a
-echo "\n"
+echo " "
 
 echo " "
 echo "###########################################################"
