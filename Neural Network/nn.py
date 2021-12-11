@@ -205,7 +205,8 @@ def get_error(data, learned_weight):
         d = [1] + d[:-1]
 
         _, prediction = forward_pass(learned_weight, d)
-
+        prediction = -1 if prediction < 0 else 1
+        #print("Prediction: ", prediction, "gen or forged:", gen_or_forg)
         if gen_or_forg * prediction <= 0:
             error+=1
     return error/len(data)
