@@ -33,7 +33,59 @@ def forward_pass(weights, initial_values):
         index = (prev_layer * width * input_width) + wght
         node_weight.append(weights[index][3])
     y = dot(input, node_weight)
-    print(y)
+    return (z_values, y)
+
+def backpropagation(weights, z_values, y, label, input_width, width):
+    #first calc the first partial deriviate
+    d_ly = y - label
+    partial_derivatives = []
+
+    # we want to go backwards (hence *back* prop)
+
+    for layer in reversed(range(1, 4)):
+        #top layer
+        if layer == 3: 
+            for i in range(input_width):
+                d_yw = z_values[2][i]
+                partial_derivatives.append(d_ly * d_yw)
+            #no need to check each one
+            continue
+        if layer == 2:
+            for node in range(width):
+                n_layer  = layer - 1
+                for i in range(input_width):
+                    index = (2 * width * input_width) + node + 1
+
+                    d_yz = weights[index][3]
+                    to = z_values[2][node + 1]
+                    frm = z_values[n_layer][i]
+
+                    d_zw = to * (1 - to) * (frm)
+                    partial_derivatives.append(d_yz * d_ly * d_zw)
+            continue
+
+        #last layer
+        if layer == 1: 
+            for node in range(width):
+                n_layer = layer - 1
+                for i in range(input_width):
+                    sum = 0
+
+                    for path in range(width):
+                        index = (2 * width * input_width) + path + 1
+                        d_yz = weights[index][3]
+
+                        index = (layer * width * input_width) + (width * (i + 1)) + node + path
+                        d_zz_top = weights[index][3]
+                        to = z_values[layer][node + 1]
+                        frm = z_values[n_layer][i]
+                        d_zw = to * (1 - to) * frm
+                        sum += (d_ly * d_zz_top * d_yz * d_zw)
+                    partial_derivatives.append(sum)
+        print("partial der:", partial_derivatives)
+
+
+    return 0
 
 def main():
     weights = []
@@ -58,7 +110,10 @@ def main():
     weights.append( [ 3, 1, 1, 2 ] )
     weights.append( [ 3, 2, 1, -1.5 ] )
 
-    z_values = forward_pass(weights, [1, 1, 1])
+    init_val = [1, 1, 1]
+    input_width = len(init_val)
+    z_values, y = forward_pass(weights,init_val )
+    backpropagation(weights, z_values, y, 1, input_width, 2)
 
 if __name__ == "__main__":
     main()
