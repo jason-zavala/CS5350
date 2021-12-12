@@ -91,6 +91,16 @@ python3 nn.py part_b
 *The following will initialize all the weights to 0:*
 python3 nn.py part_c
 
+# LOGISITC REGRESSION
+
+takes 1 parameter. 
+**EXAMPLE USAGE**
+*The following will run with map estimation*
+python3 lr.py map
+
+*The following will run with ml estimation*
+python3 lr.py ml
+
 
 
 
