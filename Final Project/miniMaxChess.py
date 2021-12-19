@@ -14,7 +14,8 @@ DEPTH = 3
 def minimax_driver(depth, board, maximizing):
     # first we want to get a list of legal moves that we will iterate over, evaluate, and compare
 
-    possibleMoves = board.legal_moves
+    possibleMoves = (list(board.legal_moves))
+    random.shuffle(possibleMoves)
     # we just want to set this to some arbitrarily large negative number in order to ensure the move we calculate is better
     bestMoveWeight = -9999
     bestMove = None
@@ -25,7 +26,7 @@ def minimax_driver(depth, board, maximizing):
         board.push(currentMove)
         # here we want to select either our current bestMove, or the the move we are returning from minimax
         # i.e. if our bestMove is better than what we are getting from minimax keep it, else swap it
-        weight = minimax(depth - 1, board,-10000,10000, not maximizing)
+        weight = max(bestMoveWeight, minimax(depth - 1, board,-10000,10000, not maximizing))
         # print("current move:", move, "weight:", weight)
         #undo our applied move
         board.pop()
@@ -42,7 +43,7 @@ def minimax(depth, board, alpha, beta, maximizing):
     if depth == 0 :
         return -evaluation(board)
     possibleMoves = board.legal_moves
-    if max:
+    if maximizing:
         bestMove = -9999
         for x in possibleMoves:
             move = chess.Move.from_uci(str(x))

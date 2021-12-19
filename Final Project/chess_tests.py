@@ -23,7 +23,9 @@ def main():
             print()
         else:
             print("LiteBlue's turn....")
-            print("depth:", DEPTH)
+            print("depth:", DEPTH, "N: ", n)
+            # if n > 30: 
+            #     DEPTH = 5
             print()
             move = minimax_driver(DEPTH,board,True)
             print("LiteBlue moves:", move)
@@ -36,6 +38,7 @@ def main():
             print("CHECKMATE")
             break
         n += 1
+
         
 
 if __name__ == "__main__":
