@@ -9,7 +9,7 @@ It takes the depth we want to explore, the state of the chess board, and a boole
 
 """
 PIECESCORE = {"p":1, "n":3, "b": 3, "r":5, "q":9, "k":10000}
-DEPTH = 4
+DEPTH = 3
 
 def minimax_driver(depth, board, maximizing):
     # first we want to get a list of legal moves that we will iterate over, evaluate, and compare
@@ -25,8 +25,8 @@ def minimax_driver(depth, board, maximizing):
         board.push(currentMove)
         # here we want to select either our current bestMove, or the the move we are returning from minimax
         # i.e. if our bestMove is better than what we are getting from minimax keep it, else swap it
-        weight = max(bestMoveWeight, minimax(depth - 1, board,-10000,10000, not maximizing))
-        print("current move:", move, weight)
+        weight = minimax(depth - 1, board,-10000,10000, not maximizing)
+        # print("current move:", move, "weight:", weight)
         #undo our applied move
         board.pop()
 
