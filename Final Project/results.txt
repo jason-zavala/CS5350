@@ -1,0 +1,17 @@
+running depth:  1
+results [('1-0', 21), ('1-0', 37), ('1-0', 25), ('1-0', 41), ('1-0', 79), ('1-0', 45), ('1-0', 59), ('1-0', 23), ('1-0', 47), ('1-0', 35)]
+percentage stockfish won: 1.0
+average game length (moves):  41.2
+time to run 10 games with depth 1: 0.5725
+
+running depth:  2
+results [('1-0', 63), ('1-0', 15), ('1-0', 13), ('1-0', 51), ('1-0', 25), ('1-0', 21), ('1-0', 15), ('1-0', 25), ('1-0', 7), ('1-0', 87)]
+percentage stockfish won: 1.0
+average game length (moves):  32.2
+time to run 10 games with depth 2: 12.6885
+
+running depth:  3
+results [('1-0', 55), ('1-0', 21), ('1-0', 23), ('1-0', 25), ('1-0', 43), ('1-0', 29), ('1-0', 49), ('1-0', 29), ('1-0', 57), ('1-0', 31)]
+percentage stockfish won: 1.0
+average game length (moves):  36.2
+time to run 10 games with depth 3: 95.3015

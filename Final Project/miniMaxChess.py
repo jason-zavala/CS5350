@@ -8,20 +8,24 @@ This is the driver method.
 It takes the depth we want to explore, the state of the chess board, and a boolean isMaximizing, which represents whether we are currently evaluating a max or a min node
 
 """
-PIECESCORE = {"p":1, "n":3, "b": 3, "r":5, "q":9, "k":10000}
+PIECESCORE = {"p":1, "n":3, "b": 3, "r":5, "q":9, "k":900}
 DEPTH = 3
 
 def minimax_driver(depth, board, maximizing):
     # first we want to get a list of legal moves that we will iterate over, evaluate, and compare
 
-    possibleMoves = (list(board.legal_moves))
-    random.shuffle(possibleMoves)
+    possibleMoves = list(board.legal_moves)
+    #random.shuffle(possibleMoves)
     # we just want to set this to some arbitrarily large negative number in order to ensure the move we calculate is better
     bestMoveWeight = -9999
     bestMove = None
 
+    #if len(possibleMoves) <= 1:
+        #print(possibleMoves)
+    
     for move in possibleMoves: 
         currentMove = chess.Move.from_uci(str(move))
+        bestMove  = currentMove
         # apply the current move we are looking at
         board.push(currentMove)
         # here we want to select either our current bestMove, or the the move we are returning from minimax
